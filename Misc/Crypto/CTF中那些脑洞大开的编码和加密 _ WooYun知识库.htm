@@ -1,0 +1,2146 @@
+
+<!-- saved from url=(0196)file:///Users/moxiaoxi/Desktop/CTF%E4%B8%AD%E9%82%A3%E4%BA%9B%E8%84%91%E6%B4%9E%E5%A4%A7%E5%BC%80%E7%9A%84%E7%BC%96%E7%A0%81%E5%92%8C%E5%8A%A0%E5%AF%86%20_%20WooYun%E7%9F%A5%E8%AF%86%E5%BA%93.html -->
+<html class=" no-touch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CTF中那些脑洞大开的编码和加密 | WooYun知识库</title>
+  <!--<base href="/">--><base href=".">
+  <meta name="fragment" content="!">
+  <meta name="description" content="CTF中那些脑洞大开的编码和加密">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script>document.documentElement.className += ('ontouchstart' in window) ? ' touch' : ' no-touch'</script>
+  <script src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/jquery.min.js"></script>
+  <script src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/95e46879.main.css">
+  <link rel="stylesheet" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shCore.css"><link rel="stylesheet" type="text/css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shThemeDefault.css"><style type="text/css" id="syntaxhighlighteranchor"></style>
+
+<style>
+*:focus {
+  outline: none;
+}
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, "Hiragino Sans GB", sans-serif;
+  font-size: 14px;
+  line-height: 2em;
+  color: #222;
+  background-color: white;
+}
+
+.comment-list{
+  padding-top: 10px;
+  border-top: 1px solid #d9d9d9;
+  margin: 0 auto;
+}
+
+.comment-list .new_comment{
+  margin-bottom: 46px;
+}
+.comment-list .comment-text {
+  padding: 10px;
+  border: 1px solid #d9d9d9;
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  border-radius: 4px;
+}
+.comment-list textarea {
+  width: 100%;
+  height: 78px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  resize: none;
+}
+
+.btn {
+  text-shadow: none;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #555555;
+  border-color: whitesmoke;
+  background: whitesmoke;
+  border-color: #d5d5d5;
+  text-shadow: none;
+  border: 1px solid #cccccc;
+}
+
+.btn-info {
+  color: white;
+  border-color: #15a7f0;
+  background: #15a7f0;
+}
+
+.hotkey {
+  position: relative;
+  top: 2px;
+  margin-left: 11px;
+}
+
+.pull-right {
+  float: right;
+}
+
+.comment-list a {
+  color: #555555;
+  text-decoration: none;
+}
+.comment-list .fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.comment-list reply:before, .fa-reply:before {
+  content: "\f112";
+}
+
+.comment-list .note-comment {
+  padding: 0 0 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #d9d9d9;
+}
+
+.comment-list .note-comment .avatar {
+  position: absolute;
+  margin-top: 3px;
+  width: 36px;
+  height: 36px;
+}
+
+.comment-list .note-comment .content {
+  margin-left: 45px;
+}
+.comment-list .note-comment .content .comment-header {
+  margin-bottom: 5px;
+}
+
+.comment-list .note-comment .content .author-name {
+  font-size: 14px;
+  color: #4094c7;
+}
+
+.comment-list .note-comment .content p a {
+  color: #4094c7;
+}
+.comment-list .comment-head{
+  margin-bottom: 10px;
+}
+.comment-list .comment-head input{
+  border-radius:4px;
+  border: 1px solid #cccccc;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.comment-list .comment-head img{
+  margin-bottom: 4px;
+}
+
+.content .author-link {
+   font-weight: 700;
+}
+
+.navbar-wooyun{
+  position: fixed;
+  width: 45px;
+  z-index: 1049;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #2f2f2f;
+}
+
+.home-wooyun{
+  font-size: 18px;
+}
+
+.navbar-wooyun div{
+/*  font-size: 26px;*/
+  color: #999999;
+  text-align: center;
+}
+
+.navbar-wooyun a{
+  color: #999999;
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: center;
+}
+
+.navbar-wooyun a:hover{
+  background-color: #e78170;
+  color: white;
+  text-shadow: 0 1px 0 #de533a;
+}
+
+.home-author-wooyun{
+//  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.bottom-author-wooyun{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.navbar-title {
+  display: none;
+}
+
+.popover-content {
+  font-weight: 900;
+  width: 60;
+}
+
+.container:before {
+  content: '';
+}
+
+table {
+  border-top: #e0e0e0 1px solid;
+  border-left: #e0e0e0 1px solid;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table th, table td {
+  border-bottom: #e0e0e0 1px solid;
+  border-right: #e0e0e0 1px solid;
+  padding: 0 3px;
+}
+
+.column-about{
+  text-align: center;
+}
+
+.receptacle {
+  width: 750px;
+}
+.entry-content h1 {
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-wooyun {
+      display: none!important;
+  }
+  .post-view .entry-content hr {
+    margin-left: -17px;
+    margin-right: -17px;
+  }
+
+  .comment-list .new_comment,
+  .comment-list .note-comment {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .receptacle {
+    width: auto;
+  }
+}
+.weibo{
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+    background: url(http://image.3001.net/images/new/icon-weibo.jpg);
+  }
+
+.navbar-mobile-show {
+  padding-top: 60px;
+}
+
+.navbar-mobile {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 60px;
+  background-color: #222;
+}
+
+.navbar-mobile-home {
+  display: block;
+  overflow: hidden;
+}
+
+.navbar-mobile-logo {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+  background-image: url(data:image/png;base64,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);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 58px 47px;
+}
+
+.navbar-mobile-logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 60px;
+  color: #ddd;
+}
+</style>
+</head>
+<body ng-app="columnWebApp" ng-controller="AppCtrl" ng-class="pageClass">
+
+  <div class="navbar-wooyun">
+    <div class="home-author-wooyun">
+      <a href="file:///" data-toggle="popover" data-placement="right" data-content="首页" data-trigger="hover" data-original-title="" title="">
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </div>
+    <div class="home-author-wooyun">
+      <a href="file:///newsend" data-toggle="popover" data-placement="right" data-content="投稿" data-trigger="hover" data-original-title="" title="">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    </div>
+    <div class="bottom-author-wooyun">
+      <a href="file:///wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fdrops.wooyun.org" data-toggle="popover" data-placement="right" data-content="登出" data-trigger="hover" data-original-title="" title="">
+        <span class="glyphicon glyphicon-log-out"></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="navbar-mobile hidden">
+    <a href="file:///" class="navbar-mobile-home">
+      <div class="navbar-mobile-logo"></div>
+      <div class="navbar-mobile-logo-text">乌云知识库</div>
+    </a>
+  </div>
+
+<main class="main-container ng-scope" ng-view="">
+<div class="main receptacle post-view ng-scope">
+
+  <article class="entry ng-scope" ng-controller="EntryCtrl" ui-lightbox="">
+    <header>
+      <h1 class="entry-title ng-binding">CTF中那些脑洞大开的编码和加密</h1>
+
+      <div class="entry-meta">
+        <a target="_blank" href="file:///author/4ido10n" class="author name ng-binding">
+          4ido10n</a>
+        <span class="bull">·</span>
+        <time title="2016/07/11 11:15" ui-time="" datetime="2016/07/11 11:15" class="published ng-binding ng-isolate-scope">2016/07/11 11:15</time>
+      </div>
+    </header>
+
+    <!-- ngIf: isCensoring -->
+
+    <section class="entry-content ng-binding" ng-bind-html="postContentTrustedHtml">
+      <p>
+        </p><h1>0x00 前言</h1>
+
+<hr>
+
+<p>正文开始之前先闲扯几句吧，玩CTF的小伙伴也许会遇到类似这样的问题:表哥，你知道这是什么加密吗？其实CTF中脑洞密码题(非现代加密方式)一般都是各种古典密码的变形，一般出题者会对密文进行一些处理，但是会给留一些线索，所以写此文的目的是想给小伙伴做题时给一些参考，当然常在CTF里出现的编码也可以了解一下。本来是想尽快写出参考的文章，无奈期间被各种事情耽搁导致文章断断续续写了2个月，文章肯定有许多没有提及到，欢迎小伙伴补充，总之，希望对小伙伴们有帮助吧！最后欢迎小伙伴来<a href="https://www.hackfun.org/">博客</a>玩耍:P</p>
+
+<h1>0x01 目录</h1>
+
+<hr>
+
+<!--more-->
+
+<ol>
+<li><p>常见编码:</p>
+
+<ol>
+<li>ASCII编码</li>
+<li>Base64/32/16编码</li>
+<li>shellcode编码</li>
+<li>Quoted-printable编码</li>
+<li>XXencode编码</li>
+<li>UUencode编码</li>
+<li>URL编码</li>
+<li>Unicode编码</li>
+<li>Escape/Unescape编码</li>
+<li>HTML实体编码</li>
+<li>敲击码(Tap code)</li>
+<li>莫尔斯电码(Morse Code)</li>
+<li>编码的故事</li>
+</ol></li>
+<li><p>各种文本加密</p></li>
+<li><p>换位加密:</p>
+
+<ol>
+<li>栅栏密码(Rail-fence Cipher)</li>
+<li>曲路密码(Curve Cipher)</li>
+<li>列移位密码(Columnar Transposition Cipher)</li>
+</ol></li>
+<li><p>替换加密:</p>
+
+<ol>
+<li>埃特巴什码(Atbash Cipher)</li>
+<li>凯撒密码(Caesar Cipher)</li>
+<li>ROT5/13/18/47</li>
+<li>简单换位密码(Simple Substitution Cipher)</li>
+<li>希尔密码(Hill Cipher)</li>
+<li>猪圈密码(Pigpen Cipher)</li>
+<li>波利比奥斯方阵密码（Polybius Square Cipher)</li>
+<li>夏多密码(曲折加密)</li>
+<li>普莱菲尔密码(Playfair Cipher)</li>
+<li>维吉尼亚密码(Vigenère Cipher)</li>
+<li>自动密钥密码(Autokey Cipher)</li>
+<li>博福特密码(Beaufort Cipher)</li>
+<li>滚动密钥密码(Running Key Cipher)</li>
+<li>Porta密码(Porta Cipher)</li>
+<li>同音替换密码(Homophonic Substitution Cipher)</li>
+<li>仿射密码(Affine Cipher)</li>
+<li>培根密码(Baconian Cipher)</li>
+<li>ADFGX和ADFGVX密码(ADFG/VX Cipher)</li>
+<li>双密码(Bifid Cipher)</li>
+<li>三分密码(Trifid Cipher)</li>
+<li>四方密码(Four-Square Cipher)</li>
+<li>棋盘密码（Checkerboard Cipher)</li>
+<li>跨棋盘密码(Straddle Checkerboard Cipher)</li>
+<li>分组摩尔斯替换密码(Fractionated Morse Cipher)</li>
+<li>Bazeries密码(Bazeries Cipher)</li>
+<li>Digrafid密码(Digrafid Cipher)</li>
+<li>格朗普雷密码(Grandpré Cipher)</li>
+<li>比尔密码(Beale ciphers)</li>
+<li>键盘密码(Keyboard Cipher)</li>
+</ol></li>
+<li><p>其他有趣的机械密码:</p>
+
+<ol>
+<li>恩尼格玛密码</li>
+</ol></li>
+<li><p>代码混淆加密:</p>
+
+<ol>
+<li>asp混淆加密</li>
+<li>php混淆加密</li>
+<li>css/js混淆加密</li>
+<li>VBScript.Encode混淆加密</li>
+<li>ppencode</li>
+<li>rrencode</li>
+<li>jjencode/aaencode</li>
+<li>JSfuck</li>
+<li>jother</li>
+<li>brainfuck编程语言</li>
+</ol></li>
+<li><p>相关工具</p></li>
+<li><p>参考网站</p></li>
+</ol>
+
+<h1>0x02 正文</h1>
+
+<hr>
+
+<h2>常见编码</h2>
+
+<h3>1.ASCII编码</h3>
+
+<p>ASCII编码大致可以分作三部分组成：</p>
+
+<p>第一部分是：ASCII非打印控制字符（参详ASCII码表中0-31）;</p>
+
+<p>第二部分是：ASCII打印字符，也就是CTF中常用到的转换;</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103300271498.jpg" alt=""></p>
+
+<p>第三部分是：扩展ASCII打印字符(第一第三部分详见<a href="http://www.asciima.com/">ASCII码表</a>解释)。</p>
+
+<p>编码转换示例</p>
+
+<p>源文本：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103144427062.png" alt=""></p>
+
+<p>ASCII编码对应十进制：</p>
+
+<div><div id="highlighter_599973" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">84 104 101 32 113 117 105 99 107 32 98 114 111 119 110 32 102 111 120 32 106 117 109 112 115 32 111 118 101 114 32 116 104 101 32 108 97 122 121 32 100 111 103</code></div></div></td></tr></tbody></table></div></div>
+
+<p>对应可以转换成二进制，八进制，十六进制等。</p>
+
+<h3>2.Base64/32/16编码</h3>
+
+<p>base64、base32、base16可以分别编码转化8位字节为6位、5位、4位。16,32,64分别表示用多少个字符来编码，这里我注重介绍base64。Base64常用于在通常处理文本数据的场合，表示、传输、存储一些二进制数据。包括MIME的email，email via MIME,在XML中存储复杂数据。</p>
+
+<p>编码原理：Base64编码要求把3个8位字节转化为4个6位的字节，之后在6位的前面补两个0，形成8位一个字节的形式，6位2进制能表示的最大数是2的6次方是64，这也是为什么是64个字符(A-Z,a-z，0-9，+，/这64个编码字符，=号不属于编码字符，而是填充字符)的原因，这样就需要一张映射表，如下：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103144549108.png" alt=""></p>
+
+<p>举个例子(base64)：</p>
+
+<blockquote>
+  <p>源文本：T h e</p>
+  
+  <p>对应ascii码:84 104 101</p>
+  
+  <p>8位binary：01010100 01101000 01100101</p>
+  
+  <p>6位binary：010101 000110 100001 100101</p>
+  
+  <p>高位补0：000010101 00000110 00100001 00100101</p>
+  
+  <p>对应ascii码：21 6 33 37</p>
+  
+  <p>查表：V G h l</p>
+</blockquote>
+
+<p>利用Python base64模块，我们分别可以这样加密解密base64 32 16：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103144756515.png" alt=""></p>
+
+<h3>3.shellcode编码</h3>
+
+<p>源文本：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>编码后：</p>
+
+<div><div id="highlighter_904007" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 45px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">\x54\x68\x65\x7f\x71\x75\x69\x63\x6b\x7f\x62\x72\x6f\x77\x6e\x7f\x66\x6f\x78\x7f\x6a\x75\x6d\x70\x73\x7f\x6f\x76\x65\x72\x7f\x74\x68\x65\x7f\x6c\x61\x7a\x79\x7f\x64\x6f\x67</code></div></div></td></tr></tbody></table></div></div>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103144956877.png" alt=""></p>
+
+<h3>4.Quoted-printable 编码</h3>
+
+<p>它是多用途互联网邮件扩展（MIME) 一种实现方式。有时候我们可以邮件头里面能够看到这样的编码，编码原理<a href="http://blog.chacuo.net/494.html">参考</a>。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103175736124.png" alt=""></p>
+
+<p>源文本：<code>敏捷的棕色狐狸跳过了懒惰的狗</code></p>
+
+<p>编码后：</p>
+
+<div><div id="highlighter_766521" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">=E6=95=8F=E6=8D=B7=E7=9A=84=E6=A3=95=E8=89=B2=E7=8B=90=E7=8B=B8=E8=B7=B3=E8</code></div><div class="line number2 index1 alt1"><code class="shell plain">=BF=87=E4=BA=86=E6=87=92=E6=83=B0=E7=9A=84=E7=8B=97</code></div></div></td></tr></tbody></table></div></div>
+
+<p>编码解码<a href="http://www.mxcz.net/tools/QuotedPrintable.aspx">链接</a></p>
+
+<h3>5.XXencode编码</h3>
+
+<p>XXencode将输入文本以每三个字节为单位进行编码。如果最后剩下的资料少于三个字节，不够的部份用零补齐。这三个字节共有24个Bit，以6bit为单位分为4个组，每个组以十进制来表示所出现的数值只会落在0到63之间。以所对应值的位置字符代替。它所选择的可打印字符是：+-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz，一共64个字符。跟base64打印字符相比，就是UUencode多一个“-” 字符，少一个”/” 字符。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145225932.png" alt=""></p>
+
+<p>源文本：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>编码后：<code>hJ4VZ653pOKBf647mPrRi64NjS0-eRKpkQm-jRaJm65FcNG-gMLdt64FjNkc+</code></p>
+
+<p>编码解码<a href="http://web.chacuo.net/charsetxxencode">链接</a></p>
+
+<h3>6.UUencode编码</h3>
+
+<p>UUencode是一种二进制到文字的编码，最早在unix 邮件系统中使用，全称：Unix-to-Unix encoding，UUencode将输入文本以每三个字节为单位进行编码，如果最后剩下的资料少于三个字节，不够的部份用零补齐。三个字节共有24个Bit，以6-bit为单位分为4个组，每个组以十进制来表示所出现的字节的数值。这个数值只会落在0到63之间。然后将每个数加上32，所产生的结果刚好落在ASCII字符集中可打印字符（32-空白…95-底线）的范围之中。</p>
+
+<p>源文本：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>编码后：<code>M5&amp;AE('%U:6-K(&amp;)R;W=N(&amp;9O&gt;"!J=6UP&lt;R!O=F5R('1H92!L87IY(&amp;1O9PH*</code></p>
+
+<p>编码解码<a href="http://web.chacuo.net/charsetuuencode">链接</a></p>
+
+<h3>7.URL编码</h3>
+
+<p>url编码又叫百分号编码，是统一资源定位(URL)编码方式。URL地址（常说网址）规定了常用地数字，字母可以直接使用，另外一批作为特殊用户字符也可以直接用（/,:@等），剩下的其它所有字符必须通过%xx编码处理。 现在已经成为一种规范了，基本所有程序语言都有这种编码，如js：有encodeURI、encodeURIComponent，PHP有 urlencode、urldecode等。编码方法很简单，在该字节ascii码的的16进制字符前面加%. 如 空格字符，ascii码是32，对应16进制是'20'，那么urlencode编码结果是:%20。</p>
+
+<p>源文本：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>编码后：</p>
+
+<div><div id="highlighter_764916" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">%54%68%65%20%71%75%69%63%6b%20%62%72%6f%77%6e%20%66%6f%78%20%6a%75%6d%70%73%20%6f%76%65%72%20%74%68%65%20%6c%61%7a%79%20%64%6f%67</code></div></div></td></tr></tbody></table></div></div>
+
+<p>编码解码<a href="http://web.chacuo.net/charseturlencode">链接</a></p>
+
+<h4>8.Unicode编码</h4>
+
+<p>Unicode编码有以下四种编码方式：</p>
+
+<p>源文本：<code>The</code></p>
+
+<p>&amp;#x [Hex]：<code>&amp;#x0054;&amp;#x0068;&amp;#x0065;</code></p>
+
+<p>&amp;# [Decimal]：<code>&amp;#00084;&amp;#00104;&amp;#00101;</code></p>
+
+<p>\U [Hex]：<code>\U0054\U0068\U0065</code></p>
+
+<p>\U+ [Hex]：<code>\U+0054\U+0068\U+0065</code></p>
+
+<p>编码解码<a href="http://www.mxcz.net/tools/Unicode.aspx">链接</a></p>
+
+<h3>9.Escape/Unescape编码</h3>
+
+<p>Escape/Unescape加密解码/编码解码,又叫%u编码，采用UTF-16BE模式， Escape编码/加密,就是字符对应UTF-16 16进制表示方式前面加%u。Unescape解码/解密，就是去掉"%u"后，将16进制字符还原后，由utf-16转码到自己目标字符。如：字符“中”，UTF-16BE是：“6d93”，因此Escape是“%u6d93”。</p>
+
+<p>源文本：<code>The</code></p>
+
+<p>编码后：<code>%u0054%u0068%u0065</code></p>
+
+<h3>10.HTML实体编码</h3>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145360942.png" alt=""></p>
+
+<p>完整编码手册<a href="http://www.w3school.com.cn/tags/html_ref_entities.html">参考</a></p>
+
+<h3>11.敲击码</h3>
+
+<p>敲击码(Tap code)是一种以非常简单的方式对文本信息进行编码的方法。因该编码对信息通过使用一系列的点击声音来编码而命名，敲击码是基于5×5方格波利比奥斯方阵来实现的，不同点是是用K字母被整合到C中。</p>
+
+<p>敲击码表:</p>
+
+<div><div id="highlighter_997870" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;</code><code class="shell plain">1&nbsp; 2&nbsp; 3&nbsp; 4&nbsp; 5</code></div><div class="line number2 index1 alt1"><code class="shell plain">1 A&nbsp; B C</code><code class="shell plain">/K</code> <code class="shell plain">D&nbsp; E</code></div><div class="line number3 index2 alt2"><code class="shell plain">2 F&nbsp; G&nbsp; H&nbsp; I&nbsp; J </code></div><div class="line number4 index3 alt1"><code class="shell plain">3 L&nbsp; M&nbsp; N&nbsp; O&nbsp; P</code></div><div class="line number5 index4 alt2"><code class="shell plain">4 Q&nbsp; R&nbsp; S&nbsp; T&nbsp; U</code></div><div class="line number6 index5 alt1"><code class="shell plain">5 V&nbsp; W&nbsp; X&nbsp; Y&nbsp; Z</code></div></div></td></tr></tbody></table></div></div>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103172497487.jpg" alt=""></p>
+
+<h3>12.莫尔斯电码</h3>
+
+<p>摩尔斯电码(Morse Code)是由美国人萨缪尔·摩尔斯在1836年发明的一种时通时断的且通过不同的排列顺序来表达不同英文字母、数字和标点符号的信号代码，摩尔斯电码主要由以下5种它的代码组成：</p>
+
+<ol>
+<li>点（.）</li>
+<li>划（-）</li>
+<li>每个字符间短的停顿（通常用空格表示停顿）</li>
+<li>每个词之间中等的停顿（通常用<code>/</code>划分）</li>
+<li>以及句子之间长的停顿</li>
+</ol>
+
+<p>摩尔斯电码字母和数字对应表：</p>
+
+<div><div id="highlighter_564515" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div><div class="line number9 index8 alt2" style="height: 15px !important">9</div><div class="line number10 index9 alt1" style="height: 15px !important">10</div><div class="line number11 index10 alt2" style="height: 15px !important">11</div><div class="line number12 index11 alt1" style="height: 15px !important">12</div><div class="line number13 index12 alt2" style="height: 15px !important">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">A&nbsp; .-&nbsp;&nbsp;&nbsp; N&nbsp; -.&nbsp;&nbsp;&nbsp; .&nbsp; .-.-.-&nbsp; +&nbsp; .-.-.&nbsp;&nbsp;&nbsp; 1&nbsp; .----</code></div><div class="line number2 index1 alt1"><code class="shell plain">B&nbsp; -...&nbsp; O&nbsp; ---&nbsp;&nbsp; ,&nbsp; --..--&nbsp; _&nbsp; ..--.-&nbsp;&nbsp; 2&nbsp; ..---</code></div><div class="line number3 index2 alt2"><code class="shell plain">C&nbsp; -.-.&nbsp; P&nbsp; .--.&nbsp; :&nbsp; ---...&nbsp; $&nbsp; ...-..-&nbsp; 3&nbsp; ...--</code></div><div class="line number4 index3 alt1"><code class="shell plain">D&nbsp; -..&nbsp;&nbsp; Q&nbsp; --.-&nbsp; "&nbsp; .-..-.&nbsp; &amp;&nbsp; .-...&nbsp;&nbsp;&nbsp; 4&nbsp; ....-</code></div><div class="line number5 index4 alt2"><code class="shell plain">E&nbsp; .&nbsp;&nbsp;&nbsp;&nbsp; R&nbsp; .-.&nbsp;&nbsp; '&nbsp; .----.&nbsp; /&nbsp; -..-.&nbsp;&nbsp;&nbsp; 5&nbsp; .....</code></div><div class="line number6 index5 alt1"><code class="shell plain">F&nbsp; ..-.&nbsp; S&nbsp; ...&nbsp;&nbsp; !&nbsp; -.-.--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp; -....</code></div><div class="line number7 index6 alt2"><code class="shell plain">G&nbsp; --.&nbsp;&nbsp; T&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp; ?&nbsp; ..--..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp; --...</code></div><div class="line number8 index7 alt1"><code class="shell plain">H&nbsp; ....&nbsp; U&nbsp; ..-&nbsp;&nbsp; @&nbsp; .--.-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8&nbsp; ---..</code></div><div class="line number9 index8 alt2"><code class="shell plain">I&nbsp; ..&nbsp;&nbsp;&nbsp; V&nbsp; ...-&nbsp; -&nbsp; -....-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9&nbsp; ----.</code></div><div class="line number10 index9 alt1"><code class="shell plain">J&nbsp; .---&nbsp; W&nbsp; .--&nbsp;&nbsp; ;&nbsp; -.-.-.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp; -----</code></div><div class="line number11 index10 alt2"><code class="shell plain">K&nbsp; -.-&nbsp;&nbsp; X&nbsp; -..-&nbsp; (&nbsp; -.--.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number12 index11 alt1"><code class="shell plain">L&nbsp; .-..&nbsp; Y&nbsp; -.--&nbsp; )&nbsp; -.--.-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number13 index12 alt2"><code class="shell plain">M&nbsp; --&nbsp;&nbsp;&nbsp; Z&nbsp; --..&nbsp; =&nbsp; -...-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+
+<p>源文本:<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>编码后:</p>
+
+<div><div id="highlighter_154998" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">- .... . / --.- ..- .. -.-. -.- / -... .-. --- .-- -. / ..-. --- -..- / .--- ..- -- .--. ... / --- ...- . .-. / - .... . / .-.. .- --.. -.-- / -.. --- --.</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线编码解码<a href="http://rumkin.com/tools/cipher/morse.php">传送门</a></p>
+
+<p>摩尔斯电码除了能对字母数字编码以外还对一些标点符号，非英语字符进行了编码，而且还有一些特定意义的组合称为特殊符号，比如<code>·-·-·-·-·-</code>表达的意思是调用信号，表示“我有消息发送”。如果你感兴趣可以参考<a href="https://zh.wikipedia.org/wiki/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81">WiKi</a>。</p>
+
+<h3>13.编码的故事</h3>
+
+<p>推荐大家去看<a href="http://wenku.baidu.com/link?url=kTrscV5j5AsZq5zvBpr2jdkEJW8LqgrkkKsddwWA3YlXmgeqh_be95nMxqbFPOYoVBVy3A6lutlcXVDYLdZ-3iRawJpc0VZ71as07FnxtGS">编码的故事</a>一文。</p>
+
+<h2>各种文本加密</h2>
+
+<p>文本加密可以将正常文本内容打乱为不可连读的文字或符号(汉字 数字 字母 音乐符号 国际音标 盲文 韩文 日文 傣文 彝文 箭头符号 花朵符号 俄文)，换行等格式信息也会被清除，达到加密的作用。在进行文本加密时可以设定一个密码，这样只有知道密码的人才能解密文本。密码可以是数字、字母和下划线，最多九位。</p>
+
+<p>加密示例：</p>
+
+<p>源文本：<code>敏捷的棕色狐狸跳过了懒惰的狗</code></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145541200.png" alt=""></p>
+
+<p>编码解码<a href="http://www.qqxiuzi.cn/bianma/wenbenjiami.php">链接</a></p>
+
+<h2>换位加密</h2>
+
+<h3>1.栅栏密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>栅栏密码(Rail-fence Cipher)就是把要加密的明文分成N个一组，然后把每组的第1个字符组合，每组第2个字符组合...每组的第N(最后一个分组可能不足N个)个字符组合，最后把他们全部连接起来就是密文，这里以2栏栅栏加密为例。</p>
+
+<p>明文：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>去空格：<code>Thequickbrownfoxjumpsoverthelazydog</code></p>
+
+<p>分组：<code>Th eq ui ck br ow nf ox ju mp so ve rt he la zy do g</code></p>
+
+<p>第一组：<code>Teucbonojmsvrhlzdg</code></p>
+
+<p>第二组：<code>hqikrwfxupoeteayo</code></p>
+
+<p>密文：<code>Teucbonojmsvrhlzdghqikrwfxupoeteayo</code></p>
+
+<p>加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/">传送门</a></p>
+
+<h3>2.曲路密码</h3>
+
+<p>曲路密码(Curve Cipher)是一种换位密码，需要事先双方约定密钥(也就是曲路路径)。</p>
+
+<p>明文：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>填入5行7列表(事先约定填充的行列数)</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145728301.png" alt=""></p>
+
+<p>加密的回路线(事先约定填充的行列数)</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145873152.png" alt=""></p>
+
+<p>密文：<code>gesfc inpho dtmwu qoury zejre hbxva lookT</code></p>
+
+<h3>3.列移位密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>列移位密码(Columnar Transposition Cipher)是一种比较简单，易于实现的换位密码，通过一个简单的规则将明文打乱混合成密文。下面我们以明文 The quick brown fox jumps over the lazy dog，密钥 how are u为例：</p>
+
+<p>填入5行7列表(事先约定填充的行列数，如果明文不能填充完表格可以约定使用某个字母进行填充)</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103145728301.png" alt=""></p>
+
+<p>密钥：<code>how are u</code></p>
+
+<p>按how are u在字母表中的出现的先后顺序进行编号，我们就有a为1,e为2，h为3，o为4，r为5，u为6，w为7，所以先写出a列，其次e列，以此类推写出的结果便是密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150019394.png" alt=""></p>
+
+<p>密文：<code>qoury inpho Tkool hbxva uwmtd cfseg erjez</code></p>
+
+<p>这里提供一个行列数相等的填充规则列移位密码加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/columnar-transposition/">链接</a></p>
+
+<p>另外由列移位密码变化来的密码也有其他的，比如<a href="http://www.thonky.com/kryptos/amsco-cipher">Amsco密码</a>(Amsco Cipher)和<a href="http://www.thonky.com/kryptos/cadenus-cipher">Cadenus密码</a>(Cadenus Cipher)。</p>
+
+<h2>替换加密</h2>
+
+<h3>1.埃特巴什码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>埃特巴什码(Atbash Cipher)是一种以字母倒序排列作为特殊密钥的替换加密，也就是下面的对应关系：</p>
+
+<pre class="highlight">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+ZYXWVUTSRQPONMLKJIHGFEDCBA
+</pre>
+
+<p>明文：<code>the quick brown fox jumps over the lazy dog</code></p>
+
+<p>密文：<code>gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt</code></p>
+
+<p>加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/atbash-cipher/">传送门</a></p>
+
+<h3>2.凯撒密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>凯撒密码(Caesar Cipher或称恺撒加密、恺撒变换、变换加密、位移加密)是一种替换加密，明文中的所有字母都在字母表上向后（或向前）按照一个固定数目进行偏移后被替换成密文。例，当偏移量是3的时候，所有的字母A将被替换成D，B变成E，以此类推，更多<a href="https://en.wikipedia.org/wiki/Caesar_cipher">参考</a>。</p>
+
+<p>加密实例：</p>
+
+<p>明文：<code>The quick brown fox jumps over the lazy dog</code></p>
+
+<p>偏移量：1</p>
+
+<p>密文：<code>Uif rvjdl cspxo gpy kvnqt pwfs uif mbaz eph</code></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150172849.png" alt=""></p>
+
+<p>你也可以使用Python的pycipher模块来加解密，如果提示没有这个模块可以通过<code>pip install pycipher</code>或者其他方式来安装pycipher模块。</p>
+
+<div><div id="highlighter_811511" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt; </code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Caesar</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt; Caesar(key</code><code class="python keyword">=</code><code class="python value">1</code><code class="python plain">).encipher(</code><code class="python string">'The quick brown fox jumps over the lazy dog'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'UIFRVJDLCSPXOGPYKVNQTPWFSUIFMBAZEPH'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt; Caesar(key</code><code class="python keyword">=</code><code class="python value">1</code><code class="python plain">).decipher(</code><code class="python string">'UIFRVJDLCSPXOGPYKVNQTPWFSUIFMBAZEPH'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>参考表(这里是向后移位加密，向前移位解密)：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103175865018.jpg" alt=""></p>
+
+<p>加密解密<a href="http://planetcalc.com/1434/">链接</a>(这个网站可以将26种情况一次性列举出来，比较方便)</p>
+
+<h3>3.ROT5/13/18/47</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>ROT5/13/18/47是一种简单的码元位置顺序替换暗码。此类编码具有可逆性，可以自我解密，主要用于应对快速浏览，或者是机器的读取。</p>
+
+<blockquote>
+  <p>ROT5 是 rotate by 5 places 的简写，意思是旋转5个位置，其它皆同。下面分别说说它们的编码方式：</p>
+  
+  <p>ROT5：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字，例如当前为0，编码后变成5，当前为1，编码后变成6，以此类推顺序循环。</p>
+  
+  <p>ROT13：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母，例如当前为A，编码后变成N，当前为B，编码后变成O，以此类推顺序循环。</p>
+  
+  <p>ROT18：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。</p>
+  
+  <p>ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。用于ROT47编码的字符其ASCII值范围是33－126，具体可参考ASCII编码，下面以rot13以例。</p>
+</blockquote>
+
+<p>明文：<code>the quick brown fox jumps over the lazy dog</code></p>
+
+<p>密文：<code>gur dhvpx oebja sbk whzcf bire gur ynml qbt</code></p>
+
+<p><a href="http://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php">传送门</a></p>
+
+<h3>4.简单替换密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>简单换位密码(Simple Substitution Cipher)加密方式是以每个明文字母被与之唯一对应且不同的字母替换的方式实现的，它不同于恺撒密码，因为密码字母表的字母不是简单的移位，而是完全是混乱的。 比如：</p>
+
+<div><div id="highlighter_245023" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">明文字母 : abcdefghijklmnopqrstuvwxyz</code></div><div class="line number2 index1 alt1"><code class="shell plain">明文字母 : phqgiumeaylnofdxjkrcvstzwb</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文：<code>the quick brown fox jumps over the lazy dog</code></p>
+
+<p>密文：<code>cei jvaql hkdtf udz yvoxr dsik cei npbw gdm</code></p>
+
+<p><strong>（2）破解</strong></p>
+
+<p>当密文数据足够多时这种密码我们可以通过字频分析方法破解或其他方法破解，比较好的在线词频分析网站<a href="http://quipqiup.com/index.php">http://quipqiup.com/index.php</a>(翻= =墙)，这里推荐一篇通过"爬山算法"来破解简单替换密码<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-simple-substitution-cipher/">文章</a>，基于文中的算法实现的工具来破解示例。</p>
+
+<p>密文：</p>
+
+<div><div id="highlighter_21378" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">pmpafxaikkitprdsikcplifhwceigixkirradfeirdgkipgigudkcekiigpwrpucikceiginasikwduearrxiiqepcceindgmieinpwdfprduppcedoikiqiasafmfddfipfgmdafmfdteiki</code></div></div></td></tr></tbody></table></div></div>
+
+<p>解密：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150561202.png" alt=""></p>
+
+<p>(ps:score值越小越准确)</p>
+
+<p>密钥：<code>PHQGIUMEAVLNOFDXBKRCZSTJWY</code></p>
+
+<p>明文：</p>
+
+<div><div id="highlighter_787293" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">AGAINPIERREWASOVERTAKENBYTHEDEPRESSIONHESODREADEDFORTHREEDAYSAFTERTHEDELIVERYOFHISSPEECHATTHELODGEHELAYONASOFAATHOMERECEIVINGNOONEANDGOINGNOWHERE</code></div></div></td></tr></tbody></table></div></div>
+
+<p>将明文转换成可读句子：</p>
+
+<p>again pierre was over taken by the depression he so dreaded for three day safter the delivery of his speech at the lodge he lay on a sofa at home receiving no one and going no where</p>
+
+<h3>5.希尔密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>希尔密码(Hill Cipher)是基于线性代数多重代换密码，由Lester S. Hill在1929年发明。每个字母转换成26进制数字：A=0, B=1, C=2...Z=25一串字母当成n维向量，跟一个n×n的矩阵相乘，再将得出的结果MOD26。更多<a href="https://en.wikipedia.org/wiki/Hill_cipher">参考</a></p>
+
+<p><strong>（2）加密</strong></p>
+
+<p>明文：<code>ACT</code></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150745351.png" alt=""></p>
+
+<p>明文对应矩阵：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150779826.png" alt=""></p>
+
+<p>加密密钥：<code>GYBNQKURP</code></p>
+
+<p>加密矩阵：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150840633.png" alt=""></p>
+
+<p>计算过程：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103150853189.png" alt=""></p>
+
+<p>密文：<code>FIN</code></p>
+
+<p><strong>（3）解密</strong></p>
+
+<p>密文：<code>FIN</code></p>
+
+<p>计算加密矩阵的逆矩阵：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151016624.png" alt=""></p>
+
+<p>解密计算：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151170410.png" alt=""></p>
+
+<p>明文：<code>ACT</code></p>
+
+<p>至于证明和求逆可以参考线性代数知识。</p>
+
+<p><strong>（4）破解</strong></p>
+
+<p>密码分析一门破解编码和密码的艺术。当我们尝试去攻破希尔密码你会发现频率分析实际上没有什么用处，特别在密钥长度增多的情况下。对于较长的二元矩阵（2×2的希尔密码）频率分析可能可能会有帮助，但是对于较短的密文分析是没有实际作用的。</p>
+
+<p>这里推荐一篇关于用<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-hill-cipher/">已知明文样本攻击的方式破解希尔密码</a>的文章，基础的希尔密码用<a href="https://en.wikipedia.org/wiki/Known-plaintext_attack">已知明文攻击</a>的方式是可攻破的，由于加密完全是线性的，所以攻击者在截取到部分明文/密文字符对可以轻松建立一个线性系统，轻松搞定希尔密码，如果不能完全确定线性系统，那么只需要添加部分明文/密文对即可。已知明文攻击时最好的方式去破解写入密码，如果明文一无所知，那就进行推测猜出部分明文。基于已知明文样本攻击的方式破解希尔密码的算法的实现工具破解示例：</p>
+
+<p>密文：</p>
+
+<div><div id="highlighter_530943" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 60px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">XUKEXWSLZJUAXUNKIGWFSOZRAWURORKXAOSLHROBXBTKCMUWDVPTFBLMKEFVWMUXTVTWUIDDJVZKBRMCWOIWYDXMLUFPVSHAGSVWUFWORCWUIDUJCNVTTBERTUNOJUZHVTWKORSVRZSVVFSQXOCMUWPYTRLGBMCYPOJCLRIYTVFCCMUWUFPOXCNMCIWMSKPXEDLYIQKDJWIWCJUMVRCJUMVRKXWURKPSEEIWZVXULEIOETOOFWKBIUXPXUGOWLFPWUSCH</code></div></div></td></tr></tbody></table></div></div>
+
+<p>解密：</p>
+
+<p>解密<a href="http://bobao.360.cn/ctf/learning/136.html">脚本实例</a></p>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/hill-cipher/">传送门</a></p>
+
+<h4>6.猪圈密码</h4>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>猪圈密码(Pigpen Cipher或称九宫格密码、朱高密码、共济会密码或共济会员密码)，是一种以格子为基础的简单替代式密码。更多<a href="https://en.wikipedia.org/wiki/Pigpen_cipher">参考</a></p>
+
+<p>明文字母和对应密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103284368471.jpg" alt=""></p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151480465.png" alt=""></p>
+
+<p>在线加密<a href="http://www.simonsingh.net/The_Black_Chamber/pigpen.html">传送门</a></p>
+
+<p><strong>（2）变种</strong></p>
+
+<p>圣堂武士密码(Templar Cipher)是共济会的“猪圈密码”的一个变种，一直被共济会圣殿骑士用。</p>
+
+<p>明文字母和对应密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151584111.png" alt=""></p>
+
+<p><strong>（3）其他变种</strong></p>
+
+<p>明文字母和对应密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151538620.jpg" alt=""></p>
+
+<p>明文字母和对应密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151669279.jpg" alt=""></p>
+
+<p>明文字母和对应密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103151949781.png" alt=""></p>
+
+<h3>7.波利比奥斯方阵密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>波利比奥斯方阵密码（Polybius Square Cipher或称波利比奥斯棋盘）是棋盘密码的一种，是利用波利比奥斯方阵进行加密的密码方式，简单的来说就是把字母排列好，用坐标(行列)的形式表现出来。字母是密文，明文便是字母的坐标。更多<a href="https://en.wikipedia.org/wiki/Polybius_square">参考</a></p>
+
+<p>常见的排布方式：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103152160997.png" alt=""></p>
+
+<p>加密实例：</p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密文：<code>442315 4145241325 1242345233 213453 2445323543 442315 31115554 143422</code></p>
+
+<h3>8.夏多密码(曲折加密)</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>夏多密码是作者麦克斯韦·格兰特在中篇小说《死亡之链》塑造夏多这一英雄人物中所自创的密码，如下图所示：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103152184484.png" alt=""></p>
+
+<blockquote>
+  <p>注意，在以上所示的字母表密钥的底部，列有四个附加符号1，2，3，4.他们可以放在密文中的任何地方。每个附加符号指示，如何转动写有密文的纸张，再进行后续的加密或解密操作，直到出现另一个附加符号。可以把每个附加符号中的那根线看作是指示针，它指示了纸张的上端朝上，朝右，朝下，朝左。比如说：如果出现符号3，那么纸张就应该转动180度，使其上端朝下； 符号2表示纸张上端朝右，依次类推。</p>
+</blockquote>
+
+<p>源文本：<code>I AM IN DANGER SEND HELP(我有危险，速来增援)</code></p>
+
+<p>密文：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103152312820.jpg" alt=""></p>
+
+<h3>9.普莱菲尔密码</h3>
+
+<p>普莱菲尔密码(Playfair Cipher)是第一种用于实际的双字替换密码，用双字加密取代了简单代换密码的单字加密，很明显这样使得密文更难破译，因为使用简单替换密码的频率分析基本没有什么作用，虽然频率分析，通常仍然可以进行，但是有25×25=625种可能而不是25种可能，可以分为三个步骤，即编制密码表、整理明文、编写译文，下面我们以明文：<br>
+<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code>和密钥<code>CULTURE</code>为例来讲解。普莱菲尔密码又称为单方密码(Single Cipher)之后又出现它的升级版Double Playfair，也就是<a href="https://en.wikipedia.org/wiki/Two-square_cipher">二方密码</a>(Two-square Cipher),在之后又有四方密码(Four-square Cipher)</p>
+
+<p><strong>(1)编制密码表</strong></p>
+
+<p>1.整理密钥字母<code>C U L T U R E</code>，去掉后面重复的字母得到：<code>C U L T R E</code></p>
+
+<p>2.用上一步得到的字母自上而下来填补5乘5方表的纵列（也可横排），之后的空白按照相同的顺序用字母表中剩余的字母依次填补完整，得到如下的方格:</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103152478059.png" alt=""></p>
+
+<blockquote>
+  <p>这一步需要注意的要点：整理密钥字母时，如果出现"Z"，则需要去除，因为在英文里"Z"的使用频率最低，相应的如果是德文，则需将"I"与"J"当作一个字母来看待，而法语则去掉"W"或"K"。</p>
+</blockquote>
+
+<p><strong>(2)整理明文</strong></p>
+
+<p>我们要遵循的原则是“两个一组”，得到是若干个两两成对的字母段，用到的是明文<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code>与字母"<code>X</code>"：</p>
+
+<p>1.将明文两两一组按顺序排开，得到：<code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO G</code></p>
+
+<p>2.对于末尾的单个字母要加上一个"<code>X</code>"使之成对：<code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO GX</code></p>
+
+<blockquote>
+  <p>这一步需要注意的要点：对于相连字母相同者，每个后面都需要加"<code>X</code>"，例如<code>TOMORROW</code>，需要写成：<code>TO MO RX RX OW</code>。</p>
+</blockquote>
+
+<p><strong>(3)编写密文</strong></p>
+
+<p>我们要得到的密文，当然，对于每个字母对，要严格遵循如下的原则：</p>
+
+<blockquote>
+  <p>1.如果两个字母在同一行则要用它右邻的字母替换，如果已在最右边，则用该行最左边的替换，如明文为"<code>CE</code>"，依据上表，应替换为"<code>EG</code>"；</p>
+  
+  <p>2.如果两个字母在同一列则要用它下边的字母替换，如果已在最下边，则用该行最上边的替换，如明文为"<code>OQ</code>"，依据上表，应替换为"<code>PS</code>"；</p>
+  
+  <p>3.如果两个字母在不同的行或列，则应在密码表中找两个字母使四个字母组成一个矩形，明文占据两个顶点，需用另外两个顶点的字母替换，如明文为"<code>HX</code>"，可以替换为"<code>WI/J</code>"或"<code>I/JW</code>"（下面的例子将按照横向替换原则即同行优先）。</p>
+</blockquote>
+
+<p>按照上述原则，将明文<code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO GX</code>加以转换得到<code>KU ND LH GT LF WU ES PW LH SI/J NP CG CR AG BU VZ QA I/JV</code>（/表示或者，不过一般用I不用J，所以分析密文时你看25个字母都有而只差一个字母没有用到可以考虑一下这种加密方式）将得到的字母改为大写并五个一组列好，得到密文<code>KUNDL HGTLF WUESP WLHSI NPCGC RAGBU VZQAI V</code>。</p>
+
+<p>加密解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/playfair/">传送门</a>(ps：这里加解密是横向编制密码表)</p>
+
+<p>加密解密实例(ps：这里加解密也是横向编制密码表)：</p>
+
+<div><div id="highlighter_822644" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 30px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 30px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Playfair</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Playfair(</code><code class="python string">'CULTREABDFGHIKMNOPQSVWXYZ'</code><code class="python plain">).encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'UKDNLHTGFLWUSEPWHLISNPCGCRGAUBVZAQIV'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Playfair(</code><code class="python string">'CULTREABDFGHIKMNOPQSVWXYZ'</code><code class="python plain">).decipher(</code><code class="python string">'UKDNLHTGFLWUSEPWHLISNPCGCRGAUBVZAQIV'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXIUMPSOVERTHELAZYDOGX'</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>10.维吉尼亚密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>维吉尼亚密码(Vigenère Cipher)是在单一恺撒密码的基础上扩展出多表代换密码，根据密钥(当密钥长度小于明文长度时可以循环使用)来决定用哪一行的密表来进行替换，以此来对抗字频统计，更多<a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">参考</a>。</p>
+
+<p>密表：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103251647158.png" alt=""></p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密钥(循环使用，密钥越长相对破解难度越大)：<code>CULTURE</code></p>
+
+<p>加密过程：如果第一行为明文字母，第一列为密钥字母，那么明文字母'T'列和密钥字母'C'行的交点就是密文字母'V'，以此类推。</p>
+
+<p>密文：<code>VBP JOZGM VCHQE JQR UNGGW QPPK NYI NUKR XFK</code></p>
+
+<p><strong>（2）已知密钥加解密</strong></p>
+
+<div><div id="highlighter_740850" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Vigenere</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Vigenere(</code><code class="python string">'CULTURE'</code><code class="python plain">).encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'VBPJOZGMVCHQEJQRUNGGWQPPKNYINUKRXFK'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Vigenere(</code><code class="python string">'CULTURE'</code><code class="python plain">).decipher(</code><code class="python string">'VBPJOZGMVCHQEJQRUNGGWQPPKNYINUKRXFK'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加密解密<a href="http://planetcalc.com/2468/">传送门</a></p>
+
+<p><strong>（3）未知密钥破解</strong></p>
+
+<p>可以参考<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher/">维吉尼亚密码分析</a>这篇文章，破解维吉尼亚密码第一步是确定密钥长度，维吉尼亚密码分析这篇文章里介绍了使用<a href="https://en.wikipedia.org/wiki/Index_of_coincidence">重合指数</a>算法来确定密钥长度，在确定密钥长度后就可以尝试确定密钥，通常我们可以使用<a href="https://en.wikipedia.org/wiki/Chi-squared_test">卡方检验</a>来找到每个字母的偏移量，基于维吉尼亚密码分析一文中的算法实现的工具破解示例。</p>
+
+<p>密文：<code>kiqpbkxspshwehospzqhoinlgapp</code></p>
+
+<p>解密：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153159335.png" alt=""></p>
+
+<p>(ps:结合左边的值，密钥以及解出明文可以确定kien 5或者klen 10为准确的结果)</p>
+
+<p>明文：<code>DEFEND THE EAST WALL OF THE CASTLE</code></p>
+
+<p><strong>（4）变种</strong></p>
+
+<p>有几种密码和维吉尼亚密码相似，格罗斯费尔德密码(Gronsfeld cipher)实际上和维吉尼亚密码相同，除了使用了数字来代替字母以外没有什么区别。数字可以选择一种数列，如斐波那契数列，或者一些其他的伪随机序列。格罗斯费尔德密码密码分析过程和维吉尼亚密码大同小异，不过，自动密钥密码不能使用<a href="http://www.zybang.com/question/a0a1108423f63d10dbbf0c3e1bfdf3b3.html">卡西斯基算法</a>(kasiski)来破译，因为自动密钥密码的密钥不重复循环使用，破译自动密钥密码最好的方法的就是从密文不断尝试和猜测其中明文或密钥的一部分。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153234937.png" alt=""></p>
+
+<div><div id="highlighter_962256" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 30px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Gronsfeld</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Gronsfeld([</code><code class="python value">2</code><code class="python plain">,</code><code class="python value">20</code><code class="python plain">,</code><code class="python value">11</code><code class="python plain">,</code><code class="python value">45</code><code class="python plain">,</code><code class="python value">20</code><code class="python plain">,</code><code class="python value">43</code><code class="python plain">,</code><code class="python value">4</code><code class="python plain">]).encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'VBPJOZGMVCHQEJQRUNGGWQPPKNYINUKRXFK'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Gronsfeld([</code><code class="python value">2</code><code class="python plain">,</code><code class="python value">20</code><code class="python plain">,</code><code class="python value">11</code><code class="python plain">,</code><code class="python value">45</code><code class="python plain">,</code><code class="python value">20</code><code class="python plain">,</code><code class="python value">43</code><code class="python plain">,</code><code class="python value">4</code><code class="python plain">]).decipher(</code><code class="python string">'VBPJOZGMVCHQEJQRUNGGWQPPKNYINUKRXFK'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://rumkin.com/tools/cipher/gronsfeld.php">传送门</a></p>
+
+<h3>11.自动密钥密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>自动密钥密码(Autokey Cipher)是多表替换密码，与维吉尼亚密码密切相关，但使用不同的方法生成密钥，通常来说要比维吉尼亚密码更安全。自动密钥密码主要有两种，关键词自动密钥密码和原文自动密钥密码.下面我们以关键词自动密钥为例：</p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>关键词：<code>CULTURE</code></p>
+
+<p>自动生成密钥：<code>CULTURE THE QUICK BROWN FOX JUMPS OVER THE</code></p>
+
+<p>接下来的加密过程和维吉尼亚密码类似，从密表可得：</p>
+
+<p>密文：<code>VBP JOZGD IVEQV HYY AIICX CSNL FWW ZVDP WVK</code></p>
+
+<p><strong>（2）已知关键词加解密</strong></p>
+
+<div><div id="highlighter_962670" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Autokey</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Autokey(</code><code class="python string">'CULTURE'</code><code class="python plain">).encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'VBPJOZGDIVEQVHYYAIICXCSNLFWWZVDPWVK'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Autokey(</code><code class="python string">'CULTURE'</code><code class="python plain">).decipher(</code><code class="python string">'VBPJOZGDIVEQVHYYAIICXCSNLFWWZVDPWVK'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/autokey/">传送门</a></p>
+
+<p><strong>（3）未知关键词破解</strong></p>
+
+<p>推荐去看这篇<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-autokey-cipher/">自动密钥密码分析文章</a>，基于文中的算法实现的工具来破解示例。</p>
+
+<p>密文:</p>
+
+<div><div id="highlighter_673309" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">isjiqymdebvuzrvwhmvysibugzhyinmiyeiklcvioimbninyksmmnjmgalvimlhspjxmgfiraqlhjcpvolqmnyynhpdetoxemgnoxl</code></div></div></td></tr></tbody></table></div></div>
+
+<p>解密</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153212434.png" alt=""></p>
+
+<p>(ps:从klen 13可以看出使用的关键词为'FORTIFICATION')</p>
+
+<p>明文：</p>
+
+<div><div id="highlighter_870152" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">DESPITEBEINGMORESECURETHANTHEVIGENERECIPHERTHEAUTOKEYCIPHERISSTILLVERYEASYTOBREAKUSINGAUTOMATEDMETHODS</code></div></div></td></tr></tbody></table></div></div>
+
+<p>将明文转换成可读句子：</p>
+
+<p>despite being more secure than the vigenere cipher the autokey cipher is still very easy to break using automated methods</p>
+
+<h3>12.博福特密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>博福特密码(Beaufort Cipher)，是一种类似于维吉尼亚密码的代换密码，由弗朗西斯·蒲福(Francis Beaufort)发明。它最知名的应用是Hagelin M-209密码机。博福特密码属于对等加密，即加密演算法与解密演算法相同。</p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密钥(循环使用，密钥越长相对破解难度越大)：<code>CULTURE</code></p>
+
+<p>加密过程：如果第一行为明文字母，第一列为密文字母，那么沿明文字母'T'列出现密钥字母'C'的行号就是密文字母'J'，以此类推。</p>
+
+<p>密文：<code>JNH DAJCS TUFYE ZOX CZICM OZHC BKA RUMV RDY</code></p>
+
+<p><strong>（2）已知密钥加解密</strong></p>
+
+<div><div id="highlighter_560435" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Beaufort</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Beaufort(</code><code class="python string">'CULTURE'</code><code class="python plain">).encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'JNHDAJCSTUFYEZOXCZICMOZHCBKARUMVRDY'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Beaufort(</code><code class="python string">'CULTURE'</code><code class="python plain">).decipher(</code><code class="python string">'JNHDAJCSTUFYEZOXCZICMOZHCBKARUMVRDY'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/beaufort/">传送门</a></p>
+
+<h3>13.滚动密钥密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>滚动密钥密码(Running Key Cipher)和维吉尼亚密码有着相同的加密机制，区别是密钥的选取，维吉尼亚使用的密钥简短，而且重复循环使用，与之相反，滚动密钥密码使用很长的密钥，比如引用一本书作为密钥。这样做的目的是不重复循环使用密钥，使密文更难破译，尽管如此，滚动密钥密码还是可以被攻破，因为有关于密钥和明文的统计分析模式可供利用，如果滚动密钥密码使用统计上的随机密钥来源，那么理论上是不可破译的，因为任何可能都可以成为密钥，并且所有的可能性都是相等的。</p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密钥：选取C语言编程(1978版)第63页第1行"errors can occur in several places. A label has..."，去掉非字母部分作为密钥(实际选取的密钥很长，长度至少不小于明文长度)。</p>
+
+<p>加密过程：加密过程和维吉尼亚密码加密过程相同</p>
+
+<p>密文:<code>XYV ELAEK OFQYH WWK BYHTJ OGTC TJI DAK YESR</code></p>
+
+<p>已知密钥在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/running-key/">传送门</a></p>
+
+<h3>14.Porta密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>Porta密码(Porta Cipher)是一个由意大利那不勒斯的医生Giovanni Battista della Porta发明的多表代换密码，Porta密码具有加密解密过程的是相同的特点。</p>
+
+<p>密表：</p>
+
+<div><div id="highlighter_345455" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div><div class="line number9 index8 alt2" style="height: 15px !important">9</div><div class="line number10 index9 alt1" style="height: 15px !important">10</div><div class="line number11 index10 alt2" style="height: 15px !important">11</div><div class="line number12 index11 alt1" style="height: 15px !important">12</div><div class="line number13 index12 alt2" style="height: 15px !important">13</div><div class="line number14 index13 alt1" style="height: 15px !important">14</div><div class="line number15 index14 alt2" style="height: 15px !important">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">KEYS| A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code></div><div class="line number2 index1 alt1"><code class="shell plain">----|----------------------------------------------------</code></div><div class="line number3 index2 alt2"><code class="shell plain">A,B | N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code></div><div class="line number4 index3 alt1"><code class="shell plain">C,D | O P Q R S T U V W X Y Z N M A B C D E F G H I J K L</code></div><div class="line number5 index4 alt2"><code class="shell plain">E,F | P Q R S T U V W X Y Z N O L M A B C D E F G H I J K</code></div><div class="line number6 index5 alt1"><code class="shell plain">G,H | Q R S T U V W X Y Z N O P K L M A B C D E F G H I J</code></div><div class="line number7 index6 alt2"><code class="shell plain">I,J | R S T U V W X Y Z N O P Q J K L M A B C D E F G H I</code></div><div class="line number8 index7 alt1"><code class="shell plain">K,L | S T U V W X Y Z N O P Q R I J K L M A B C D E F G H</code></div><div class="line number9 index8 alt2"><code class="shell plain">M,N | T U V W X Y Z N O P Q R S H I J K L M A B C D E F G</code></div><div class="line number10 index9 alt1"><code class="shell plain">O,P | U V W X Y Z N O P Q R S T G H I J K L M A B C D E F</code></div><div class="line number11 index10 alt2"><code class="shell plain">Q,R | V W X Y Z N O P Q R S T U F G H I J K L M A B C D E</code></div><div class="line number12 index11 alt1"><code class="shell plain">S,T | W X Y Z N O P Q R S T U V E F G H I J K L M A B C D</code></div><div class="line number13 index12 alt2"><code class="shell plain">U,V | X Y Z N O P Q R S T U V W D E F G H I J K L M A B C</code></div><div class="line number14 index13 alt1"><code class="shell plain">W,X | Y Z N O P Q R S T U V W X C D E F G H I J K L M A B</code></div><div class="line number15 index14 alt2"><code class="shell plain">Y,Z | Z N O P Q R S T U V W X Y B C D E F G H I J K L M A</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密钥(循环使用，密钥越长相对破解难度越大)：<code>CULTURE</code></p>
+
+<p>加密过程：明文字母'T'列与密钥字母'C'行交点就是密文字母'F',以此类推。</p>
+
+<p>密文：<code>FRW HKQRY YMFMF UAA OLWHD ALWI JPT ZXHC NGV</code></p>
+
+<p>已知密钥在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/porta/">传送门</a></p>
+
+<p><strong>（2）破解</strong></p>
+
+<p>Porta密码可以被以<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher-part-2/">维吉尼亚密码</a>破解相类似方式进行自动攻破，破解Porta密码第一步是先确定密钥长度，这里推荐一篇关于使用<a href="https://en.wikipedia.org/wiki/Index_of_coincidence">重合指数算法</a>确定为维吉尼亚密钥长度<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-vigenere-cipher/">文章</a>。</p>
+
+<h3>15.同音替换密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>同音替换密码(Homophonic Substitution Cipher)是单字母可以被其他几种密文字母同时替换的密码，通常要比标准替换密码破解更加困难，破解标准替换密码最简单的方法就是分析字母出现频率，通常在英语中字母'E'(或'T')出现的频率是最高的，如果我们允许字母'E'可以同时被3种不同字符代替，那么就不能还是以普通字母的频率来分析破解，如果允许可代替字符越多，那么密文就会更难破译。</p>
+
+<p>常见代换规则表：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153475267.png" alt=""></p>
+
+<p>明文:<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>密文(其中一种)：<code>6CZ KOVST XJ0MA EQY IOGL4 0W1J UC7 P9NB F0H</code></p>
+
+<p><strong>（2）破解</strong></p>
+
+<p>如果同音替换密码的同音词个数很多，那么破解它难度很大，通常的方法采取类似破解替换密码的"爬山算法"，除了找到一个明文字母映射几个字符之外，我们还需要确定映射了那些字符，可以尝试<a href="http://www.cs.sjsu.edu/faculty/stamp/RUA/homophonic.pdf">2层嵌套"爬山算法"</a>来破解，外层确定映射的数量，内层确定映射字符。</p>
+
+<h3>16.仿射密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>仿射密码(Affine Cipher)是一种单表代换密码，字母表中的每个字母相应的值使用一个简单的数学函数映射到对应的数值，再把对应数值转换成字母。这个公式意味着每个字母加密都会返回一个相同的字母，意义着这种加密方式本质上是一种标准替代密码。因此，它具有所有替代密码的弱点。每一个字母都是通过函数（ax + b）mod m加密，其中B是位移量，为了保证仿射密码的可逆性，a和m需要满足gcd(a , m)=1，一般m为设置为26。更多<a href="https://en.wikipedia.org/wiki/Affine_cipher">参考</a></p>
+
+<p>常见的字母对应关系：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153585880.png" alt=""></p>
+
+<p>下面我们以E(x) = (5x + 8) mod 26函数为例子</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103153669163.png" alt=""></p>
+
+<p>至于解密我们知道</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103154316468.png" alt=""></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103154414181.png" alt=""></p>
+
+<p>即可得出解密结果</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103154542315.png" alt=""></p>
+
+<p>以E(x) = (5x + 8) mod 26加密，通过计算可得D(x)=21(x - 8) mod 26，这样便可以得到明文。</p>
+
+<p>可参考的Python脚本</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103154750760.png" alt=""></p>
+
+<p>加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/affine/">传送门</a></p>
+
+<h3>17.培根密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>培根密码(Baconian Cipher)是一种替换密码，每个明文字母被一个由5字符组成的序列替换，最初的加密方式就是由'A'和'B'组成序列替换明文(所以你当然也可以用别的字母)，比如字母'D'替换成"aaabb"，以下是全部的对应关系(另一种对于关系是每个字母都有唯一对应序列，I和J与U/V各自都有不同对应序列)：</p>
+
+<div><div id="highlighter_14357" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div><div class="line number9 index8 alt2" style="height: 15px !important">9</div><div class="line number10 index9 alt1" style="height: 15px !important">10</div><div class="line number11 index10 alt2" style="height: 15px !important">11</div><div class="line number12 index11 alt1" style="height: 15px !important">12</div><div class="line number13 index12 alt2" style="height: 15px !important">13</div><div class="line number14 index13 alt1" style="height: 15px !important">14</div><div class="line number15 index14 alt2" style="height: 15px !important">15</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">A = aaaaa&nbsp; I</code><code class="shell plain">/J</code> <code class="shell plain">= abaaa&nbsp; R = baaaa</code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="shell plain">B = aaaab&nbsp; K = abaab&nbsp;&nbsp;&nbsp; S = baaab</code></div><div class="line number4 index3 alt1">&nbsp;</div><div class="line number5 index4 alt2"><code class="shell plain">C = aaaba&nbsp; L = ababa&nbsp;&nbsp;&nbsp; T = baaba</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="shell plain">D = aaabb&nbsp; M = ababb&nbsp;&nbsp;&nbsp; U</code><code class="shell plain">/V</code> <code class="shell plain">= baabb</code></div><div class="line number8 index7 alt1">&nbsp;</div><div class="line number9 index8 alt2"><code class="shell plain">E = aabaa&nbsp; N = abbaa&nbsp;&nbsp;&nbsp; W = babaa</code></div><div class="line number10 index9 alt1">&nbsp;</div><div class="line number11 index10 alt2"><code class="shell plain">F = aabab&nbsp; O = abbab&nbsp;&nbsp;&nbsp; X = babab</code></div><div class="line number12 index11 alt1">&nbsp;</div><div class="line number13 index12 alt2"><code class="shell plain">G = aabba&nbsp; P = abbba&nbsp;&nbsp;&nbsp; Y = babba</code></div><div class="line number14 index13 alt1">&nbsp;</div><div class="line number15 index14 alt2"><code class="shell plain">H = aabbb&nbsp; Q = abbbb&nbsp;&nbsp;&nbsp; Z = babbb</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文：<code>T     H     E     F     O     X</code></p>
+
+<p>密文：<code>baaba aabbb aabaa aabab abbab babab</code></p>
+
+<p>加解密<a href="http://rumkin.com/tools/cipher/baconian.php">传送门</a></p>
+
+<h3>18.ADFGX和ADFGVX密码</h3>
+
+<p><strong>（1）ADFGX密码</strong></p>
+
+<p>ADFGX密码(ADFGX Cipher)是结合了改良过的Polybius方格替代密码与单行换位密码的矩阵加密密码，使用了5个合理的密文字母：A，D，F，G，X，这些字母之所以这样选择是因为当转译成摩尔斯电码(ADFGX密码是德国军队在一战发明使用的密码)不易混淆，目的是尽可能减少转译过程的操作错误。</p>
+
+<p>加密矩阵示例：</p>
+
+<div><div id="highlighter_909808" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">A&nbsp; D&nbsp; F&nbsp; G&nbsp;&nbsp; X</code></div><div class="line number2 index1 alt1"><code class="shell spaces">&nbsp;&nbsp;</code><code class="shell plain">----------------</code></div><div class="line number3 index2 alt2"><code class="shell plain">A | p&nbsp; h&nbsp; q&nbsp; g&nbsp;&nbsp; m </code></div><div class="line number4 index3 alt1"><code class="shell plain">D | e&nbsp; a&nbsp; y&nbsp; n&nbsp;&nbsp; o </code></div><div class="line number5 index4 alt2"><code class="shell plain">F | f&nbsp; d&nbsp; x&nbsp; k&nbsp;&nbsp; r</code></div><div class="line number6 index5 alt1"><code class="shell plain">G | c&nbsp; </code><code class="shell functions">v</code>&nbsp; <code class="shell plain">s&nbsp; z&nbsp;&nbsp; w </code></div><div class="line number7 index6 alt2"><code class="shell plain">X | b&nbsp; u&nbsp; t&nbsp; i</code><code class="shell plain">/j</code> <code class="shell plain">l</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文：<code>THE QUICK BROWN FOX</code></p>
+
+<p>结果矩阵加密：</p>
+
+<div><div id="highlighter_287841" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">XF AD DA&nbsp;&nbsp; AF XD XG GA FG&nbsp;&nbsp; XA FX DX GX DG&nbsp;&nbsp; FA DX FF </code></div></div></td></tr></tbody></table></div></div>
+
+<p>列移位密钥：<code>how are u</code></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103154823575.png" alt=""></p>
+
+<p>密文：<code>DXADF AGXF XFFXD FXGGX DGFG AADA ADXXF</code></p>
+
+<p>已知密钥加解密：</p>
+
+<div><div id="highlighter_262740" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">ADFGX</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;a </code><code class="python keyword">=</code> <code class="python plain">ADFGX(</code><code class="python string">'phqgmeaynofdxkrcvszwbutil'</code><code class="python plain">,</code><code class="python string">'HOWAREU'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python plain">&gt;&gt;&gt;a.encipher(</code><code class="python string">'THE QUICK BROWN FOX'</code><code class="python plain">)</code></div><div class="line number4 index3 alt1"><code class="python string">'DXADFAGXFXFFXDFXGGXDGFGAADAADXXF'</code></div><div class="line number5 index4 alt2"><code class="python plain">&gt;&gt;&gt;a.decipher(</code><code class="python string">'DXADFAGXFXFFXDFXGGXDGFGAADAADXXF'</code><code class="python plain">)</code></div><div class="line number6 index5 alt1"><code class="python string">'THEQUICKBROWNFOX'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/adfgx-cipher/">传送门</a></p>
+
+<p><strong>（2）ADFGVX密码</strong></p>
+
+<p>ADFGVX密码实际上就是ADFGX密码的扩充升级版，一样具有ADFGX密码相同的特点，加密过程也类似，不同的是密文字母增加了V，使得可以再使用10数字来替换明文。</p>
+
+<div><div id="highlighter_582280" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">A D F G V X</code></div><div class="line number2 index1 alt1"><code class="shell spaces">&nbsp;&nbsp;</code><code class="shell plain">-------------</code></div><div class="line number3 index2 alt2"><code class="shell plain">A | p h 0 q g 6</code></div><div class="line number4 index3 alt1"><code class="shell plain">D | 4 m e a 1 y</code></div><div class="line number5 index4 alt2"><code class="shell plain">F | l 2 n o f d</code></div><div class="line number6 index5 alt1"><code class="shell plain">G | x k r 3 c </code><code class="shell functions">v</code></div><div class="line number7 index6 alt2"><code class="shell plain">V | s 5 z w 7 b</code></div><div class="line number8 index7 alt1"><code class="shell plain">X | j 9 u t i 8</code></div></div></td></tr></tbody></table></div></div>
+
+<p>由于两种加密过程完全类似这里就不再重复给出加密过程。</p>
+
+<div><div id="highlighter_871728" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">ADFGVX</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;a </code><code class="python keyword">=</code> <code class="python plain">ADFGVX(</code><code class="python string">'ph0qg64mea1yl2nofdxkr3cvs5zw7bj9uti8'</code><code class="python plain">,</code><code class="python string">'HOWAREU'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python plain">&gt;&gt;&gt;a.encipher(</code><code class="python string">'THE QUICK BROWN FOX'</code><code class="python plain">)</code></div><div class="line number4 index3 alt1"><code class="python string">'DXXFAFGFFXGGGFGXDVGDVGFAVFVAFVGG'</code></div><div class="line number5 index4 alt2"><code class="python plain">&gt;&gt;&gt;a.decipher(</code><code class="python string">'DXXFAFGFFXGGGFGXDVGDVGFAVFVAFVGG'</code><code class="python plain">)</code></div><div class="line number6 index5 alt1"><code class="python string">'THEQUICKBROWNFOX'</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>19.双密码</h3>
+
+<p><strong>（1）双密码</strong></p>
+
+<p>双密码(Bifid Cipher)结合了波利比奥斯方阵换位密码，并采用分级实现扩散，这里的“双”是指用2个密钥进行加密。双密码是由法国Felix Delastelle发明，除此之外Felix Delastelle还发明了三分密码(Trifid Cipher)，四方密码(Four-Square Cipher)。还有一个<a href="https://en.wikipedia.org/wiki/Two-square_cipher">两方密码</a>(Two-Square)与四方密码类似，<a href="http://www.thonky.com/kryptos/cm-bifid-cipher">共轭矩阵双密码</a>(Conjugated Matrix Bifid Cipher)也是双密码的变种。</p>
+
+<p>示例密阵:</p>
+
+<div><div id="highlighter_39380" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;</code><code class="shell plain">1 2 3 4 5</code></div><div class="line number2 index1 alt1"><code class="shell plain">1| p h q g m</code></div><div class="line number3 index2 alt2"><code class="shell plain">2| e a y l n</code></div><div class="line number4 index3 alt1"><code class="shell plain">3| o f d x k</code></div><div class="line number5 index4 alt2"><code class="shell plain">4| r c </code><code class="shell functions">v</code> <code class="shell plain">s z</code></div><div class="line number6 index5 alt1"><code class="shell plain">5| w b u t i</code><code class="shell plain">/j</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文:<code>THE QUICK BROWN FOX</code></p>
+
+<p>经过密阵转换：</p>
+
+<p>行:<code>512 15543 54352 333</code></p>
+
+<p>列:<code>421 33525 21115 214</code></p>
+
+<p>分组:</p>
+
+<p><code>51215 54354 35233 3</code></p>
+
+<p><code>42133 52521 11521 4</code></p>
+
+<p>合并：</p>
+
+<div><div id="highlighter_308708" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">5121542133 5435452521 3523311521 34</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在经过密阵转换后密文:<code>WETED TKZNE KYOME X</code></p>
+
+<p><strong>（2）已知密阵加解密</strong></p>
+
+<div><div id="highlighter_393626" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;Bifid(</code><code class="python string">'phqgmeaylnofdxkrcvszwbuti'</code><code class="python plain">,</code><code class="python value">5</code><code class="python plain">).encipher(</code><code class="python string">'THE QUICK BROWN FOX'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python string">'WETEDTKZNEKYOMEX'</code></div><div class="line number4 index3 alt1"><code class="python plain">&gt;&gt;&gt;Bifid(</code><code class="python string">'phqgmeaylnofdxkrcvszwbuti'</code><code class="python plain">,</code><code class="python value">5</code><code class="python plain">).decipher(</code><code class="python string">'WETEDTKZNEKYOMEX'</code><code class="python plain">)</code></div><div class="line number5 index4 alt2"><code class="python string">'THEQUICKBROWNFOX'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/bifid/">传送门</a></p>
+
+<p><strong>（3）未知密阵破解</strong></p>
+
+<p>手工分析破解双密码是有一定难度的，每个字母都是同过3个数字进行非线性代替转换，而且之后还会对字母顺序进行打乱，这样使双密码比一些替换密码和换位密码更难破解。然而，现在是计算机时代，这张加密方式没有安全性可言，通过<a href="http://baike.baidu.com/link?url=mkceUr0W4L7B7UVQxc-dUkXKPJbj9v4YyBh_hrskt5iXk99UdnjW6mZ_YxoJO1PkT1zdjEZD2hd7TCMiSxpOma">模拟退火</a>算法就能快速找到双密码的密阵。 这里推荐一篇详细的<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-bifid-cipher/">双密码破解分析</a>的文章，基于模拟退火算法实现的工具破解示例：</p>
+
+<p>密文:</p>
+
+<div><div id="highlighter_756549" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 60px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">KWTAZQLAWWZCPONIVBTTBVQUZUGRNHAYIYGIAAYURCUQLDFTYVHTNQEENUPAIFCUNQTNGITEFUSHFDWHRIFSVTBISYDHHASQSROMUEVPQHHCCRBYTQBHWYRRHTEPEKHOBFSZUQBTSYRSQUDCSAOVUUGXOAUYWHPGAYHDNKEZPFKKWRIEHDWPEIOTBKESYETPBPOGTHQSPUMDOVUEQAUPCPFCQHRPHSOPQRSSLPEVWNIQDIOTSQESDHURIEREN</code></div></div></td></tr></tbody></table></div></div>
+
+<p>解密：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103180643941.png" alt=""></p>
+
+<p>得到加密矩阵:</p>
+
+<div><div id="highlighter_421180" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">G B C M K</code></div><div class="line number2 index1 alt1"><code class="shell plain">D H U E T</code></div><div class="line number3 index2 alt2"><code class="shell plain">L V Y W I</code></div><div class="line number4 index3 alt1"><code class="shell plain">X O Z S P</code></div><div class="line number5 index4 alt2"><code class="shell plain">N F A R Q</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文:</p>
+
+<div><div id="highlighter_155488" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 60px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">CRYPTANALYS IS OF BIFID BY HAND IS ACTUALLY FAIRLY DIFFICULT THE FRACTIONATING NATURE OF THE CIPHER IE EACH LETTER IS SUBSTITUTED BY CHARACTERS THEN THESE CHARACTERS ARE IUM BLED WHICH WILL PULL THEM APART MAKES THE CIPHER MUCH STRONGER THAN SUBSTITUTION CIPHERS OR TRANSPOSITION CIPHER SON THEIR OWN</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>20.三分密码</h3>
+
+<p>三分密码(Trifid Cipher)结合换位和替换，三分密码与双密码非常相似，差别之处就是用除了3×3×3的密阵代替5×5密阵。</p>
+
+<p>示例密阵:</p>
+
+<div><div id="highlighter_118324" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">密阵顺序 = EPSDUCVWYM.ZLKXNBTFGORIJHAQ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number2 index1 alt1">&nbsp;</div><div class="line number3 index2 alt2"><code class="shell plain">方阵 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方阵 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 方阵 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></div><div class="line number4 index3 alt1"><code class="shell spaces">&nbsp;&nbsp;</code><code class="shell plain">1 2 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 2 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 2 3&nbsp;&nbsp;&nbsp; </code></div><div class="line number5 index4 alt2"><code class="shell plain">1 E P S&nbsp;&nbsp;&nbsp; 1 M . Z&nbsp;&nbsp;&nbsp; 1 F G O&nbsp;&nbsp;&nbsp; </code></div><div class="line number6 index5 alt1"><code class="shell plain">2 D U C&nbsp;&nbsp;&nbsp; 2 L K X&nbsp;&nbsp;&nbsp; 2 R I J&nbsp;&nbsp;&nbsp; </code></div><div class="line number7 index6 alt2"><code class="shell plain">3 V W Y&nbsp;&nbsp;&nbsp; 3 N B T&nbsp;&nbsp;&nbsp; 3 H A Q&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文:<code>THE QUICK BROWN FOX.</code></p>
+
+<p>经过密阵转换：</p>
+
+<div><div id="highlighter_98921" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">T H E Q U I C K B R O W N F O X .</code></div><div class="line number2 index1 alt1"><code class="shell plain">2 3 1 3 1 3 1 2 2 3 3 1 2 3 3 2 2</code></div><div class="line number3 index2 alt2"><code class="shell plain">3 3 1 3 2 2 2 2 3 2 1 3 3 1 1 2 1</code></div><div class="line number4 index3 alt1"><code class="shell plain">3 1 1 3 2 2 3 2 2 1 3 2 1 1 3 3 2</code></div></div></td></tr></tbody></table></div></div>
+
+<p>T(233)表示T在第一个方阵第三行第三列的位置</p>
+
+<p>分组(分组密钥以5为例):</p>
+
+<div><div id="highlighter_689485" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">THEQU ICKBR OWNFO X.</code></div><div class="line number2 index1 alt1"><code class="shell plain">23131 31223 31233 22</code></div><div class="line number3 index2 alt2"><code class="shell plain">33132 22232 13311 21</code></div><div class="line number4 index3 alt1"><code class="shell plain">31132 23221 32113 32</code></div></div></td></tr></tbody></table></div></div>
+
+<p>合并：</p>
+
+<div><div id="highlighter_144604" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">23131 33132 31132 31223 22232 23221 31233 13311 32113 22 21 32</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在经过密阵转换后密文:</p>
+
+<div><div id="highlighter_91204" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">231313313231132312232223223221312331331132113222132</code></div><div class="line number2 index1 alt1"><code class="shell plain">N&nbsp; O&nbsp; O&nbsp; N&nbsp; W&nbsp; G&nbsp; B&nbsp; X&nbsp; X&nbsp; L&nbsp; G&nbsp; H&nbsp; H&nbsp; W&nbsp; S&nbsp; K&nbsp; W</code></div></div></td></tr></tbody></table></div></div>
+
+<p>想要深入了解三分密码并破解三分密码的小伙伴推荐去看LANIKI教授的一篇密码课程章节的<a href="http://www.und.nodak.edu/org/crypto/crypto/lanaki.crypt.class/lessons/lesson17.zip">讲义</a>。</p>
+
+<h3>21.四方密码</h3>
+
+<p><strong>（1）介绍</strong></p>
+
+<p>四方密码(Four-Square Cipher)是类似普莱菲尔密码双字母加密密码，这样使加密效果强于其他替换密码，因为频率分析变得更加困难了。</p>
+
+<p>四方密码使用4个预先设置的5×5字母矩阵，每个矩阵包括25个字母，通常字母'j'被融入到'i'中(维基百科上说'q'被忽略，不过这不重要，因为'q'和'j'都是很少出现的字母)，通常左上和右下矩阵式是标准字母排序明文矩阵，右上和左下矩阵是打乱顺序的密钥矩阵。</p>
+
+<p>示例矩阵：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103155413939.png" alt=""></p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>整理明文(分组不够时用'X'填充)：<code>TH EQ UI CK BR OW NF OX JU MP SO VE RT HE LA ZY DO GX</code></p>
+
+<p>加密过程：分别在明文矩阵中找到'TH'，分别找到他们在右上矩阵有左下矩阵的交点字母'ES'就是密文，以此类推。</p>
+
+<p>密文：<code>ESZWQAFHGTDKWHRKUENYQOLMQTUNWMBPTGHQ</code></p>
+
+<p><strong>（2）已知密钥矩阵加解密</strong></p>
+
+<div><div id="highlighter_673795" class="syntaxhighlighter  python"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="python plain">&gt;&gt;&gt;</code><code class="python keyword">from</code> <code class="python plain">pycipher </code><code class="python keyword">import</code> <code class="python plain">Foursquare</code></div><div class="line number2 index1 alt1"><code class="python plain">&gt;&gt;&gt;fs </code><code class="python keyword">=</code> <code class="python plain">Foursquare(</code><code class="python string">'zgptfoihmuwdrcnykeqaxvsbl'</code><code class="python plain">,</code><code class="python string">'mfnbdcrhsaxyogvituewlqzkp'</code><code class="python plain">)</code></div><div class="line number3 index2 alt2"><code class="python plain">&gt;&gt;&gt;fs.encipher(</code><code class="python string">'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'</code><code class="python plain">)</code></div><div class="line number4 index3 alt1"><code class="python string">'ESZWQAFHGTDKWHRKUENYQOLMQTUNWMBPTGHQ'</code></div><div class="line number5 index4 alt2"><code class="python plain">&gt;&gt;&gt;fs.decipher(</code><code class="python string">'ESZWQAFHGTDKWHRKUENYQOLMQTUNWMBPTGHQ'</code><code class="python plain">)</code></div><div class="line number6 index5 alt1"><code class="python string">'THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/four-square/">传送门</a></p>
+
+<p><strong>（3）未知密钥矩阵破解</strong></p>
+
+<p>推荐一篇关于采用<a href="http://blog.csdn.net/xianlingmao/article/details/7798647">模拟退火算法</a>的<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-foursquare-cipher/">四方密码分析</a>文章，如果有足够多的密文那么四方密码可以轻易被破解，如果知道了明文和密文推出密钥是很容易的，猜测部分明文是一个有效的方法去破解四方密码，如果一部分明文已知或者可以被猜测出 那么我们首先要确定尽可能多可利用的密钥，然后才可以进行更多的推测或者用其他的方法破译。基于四方密码分析一文实现的<a href="http://www.practicalcryptography.com/cryptanalysis/stochastic-searching/cryptanalysis-foursquare-cipher/">C代码</a>破解示例：</p>
+
+<p>密文(密文最好在200个字符以上)：</p>
+
+<p>HMMKEQESDTMDHLAWFWMNKSOSFOMRFNLWLKHNSQGGEKXEOLLVDXNRSQQGARTFKSAVNUDLFNDHESPZGQ TWESAGPGSQSQSTPKUSBBQLQHESAGPGSQSQGXLNAVHTPMHMKKNYGSUGDMTPDGFNKYAVHXLWGEKRILESLZ ZOFNAVIHRHRKAGHSMYUGEGNSRGAVMVOQPRLNKRXLMYLQPXILESQYBNRHRKAGKYQXDIHMPGPYOERZOLBEZ LURFWLWUOLDDPNSQYAGMUQPQWESBEZVEQESDTMDBQLWDIUSHB</p>
+
+<p>用法：</p>
+
+<div><div id="highlighter_382914" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">gcc -O3 -lm foursquarecrack2.c scoreText_2.c -o fsc</code></div><div class="line number2 index1 alt1"><code class="shell plain">.</code><code class="shell plain">/fsc</code></div></div></td></tr></tbody></table></div></div>
+
+<p>输出结果：</p>
+
+<div><div id="highlighter_886195" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">Running foursquarecrack, this could take a few minutes... </code></div><div class="line number2 index1 alt1"><code class="shell plain">best score so far: -1239.505249, on iteration 1</code></div><div class="line number3 index2 alt2"><code class="shell plain">Key: </code><code class="shell string">'KFMLUGWSQEPOZTNRBHDAVXCIY'</code><code class="shell plain">,</code><code class="shell string">'UGSVKFIZMOYXPQRWTHLNCABED'</code>&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="line number4 index3 alt1"><code class="shell plain">plaintext: 'THECIPHERTEXTSQUARESCANBEGENERATEDUSINGAKEYWORDDROPPINGDUPLICAT</code></div><div class="line number5 index4 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">ELETTERSTHENFILLTHEREMAININGSPACESWITHTHEREMAININGLETTERSOFTHEA</code></div><div class="line number6 index5 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">LPHABETINORDERALTERNATIVELYTHECIPHERTEXTSQUARESCANBEGENERATEDCO</code></div><div class="line number7 index6 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">MPLETELYRANDOMLYTHEFOURSQUAREALGORITHMALLOWSFORTWOSEPARATEKEYSO</code></div><div class="line number8 index7 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">NEFOREACHOFTHETWOCIPHERTEXTMATRICESX'</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>2.棋盘密码</h3>
+
+<p>棋盘密码（Checkerboard Cipher)是使用一个波利比奥斯方阵和两个密钥作为密阵的替换密码，通常在波利比奥斯方阵中J字母往往被包含在I字母中。</p>
+
+<p>示例密阵：</p>
+
+<div><div id="highlighter_549978" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;</code><code class="shell plain">Q&nbsp; U&nbsp; I&nbsp; C&nbsp; K</code></div><div class="line number2 index1 alt1"><code class="shell spaces">&nbsp;&nbsp;</code><code class="shell plain">--------------</code></div><div class="line number3 index2 alt2"><code class="shell plain">B |K&nbsp; N I</code><code class="shell plain">/J</code> <code class="shell plain">G&nbsp; H</code></div><div class="line number4 index3 alt1"><code class="shell plain">R |P&nbsp; Q&nbsp; R&nbsp; S&nbsp; T</code></div><div class="line number5 index4 alt2"><code class="shell plain">O |O&nbsp; Y&nbsp; Z&nbsp; U&nbsp; A</code></div><div class="line number6 index5 alt1"><code class="shell plain">W |M&nbsp; X&nbsp; W&nbsp; V&nbsp; B</code></div><div class="line number7 index6 alt2"><code class="shell plain">N |L&nbsp; F&nbsp; E&nbsp; D&nbsp; C</code></div></div></td></tr></tbody></table></div></div>
+
+<p>经过密阵替换:</p>
+
+<div><div id="highlighter_12687" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">明文:T&nbsp; H&nbsp; E&nbsp; Q&nbsp; U&nbsp; I&nbsp; C&nbsp; K&nbsp; B&nbsp; R&nbsp; O&nbsp; W&nbsp; N&nbsp; F&nbsp; O&nbsp; X</code></div><div class="line number2 index1 alt1"><code class="shell plain">密文:RK BK RU OC OC BI NK BQ WK RI OQ WI BU NU OQ WU</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>23.跨棋盘密码</h3>
+
+<p>跨棋盘密码(Straddle Checkerboard Cipher)是一种替换密码，当这种密码在结合其他加密方式，加密效果会更好。</p>
+
+<p>棋盘示例(选择3和7作为变换):</p>
+
+<div><div id="highlighter_664279" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;</code><code class="shell plain">0 1 2 3 4 5 6 7 8 9</code></div><div class="line number2 index1 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;</code><code class="shell plain">f k m&nbsp;&nbsp; c p d&nbsp;&nbsp; y e</code></div><div class="line number3 index2 alt2"><code class="shell plain">3: h b i g q r o s a z</code></div><div class="line number4 index3 alt1"><code class="shell plain">7: l u t j n w </code><code class="shell functions">v</code> <code class="shell plain">x&nbsp;&nbsp;&nbsp; </code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文: <code>T H E Q U I C K B R O W N F O X</code></p>
+
+<p>经过加密棋盘替换得到密文:<code>72 30 9 34 71 32 4 1 31 35 36 75 74 0 36 77</code></p>
+
+<p>当然我们还可以继续用其他的加密方式在对跨棋盘密码加密出的结果再进行加密:</p>
+
+<p>示例变换密钥:83729</p>
+
+<div><div id="highlighter_204422" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">8372983729837298372983729837</code></div><div class="line number2 index1 alt1"><code class="shell plain">+7230934713241313536757403677</code></div><div class="line number3 index2 alt2"><code class="shell plain">-----------------------------</code></div><div class="line number4 index3 alt1"><code class="shell spaces">&nbsp;</code><code class="shell plain">5502817432078501808630122404</code></div></div></td></tr></tbody></table></div></div>
+
+<p>在经过棋盘转换后:</p>
+
+<div><div id="highlighter_409295" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">5502817432078501808630122404</code></div><div class="line number2 index1 alt1"><code class="shell plain">ppfmyk n </code><code class="shell keyword">if</code>&nbsp; <code class="shell plain">pfkyfyd hkmmcfc</code></div></div></td></tr></tbody></table></div></div>
+
+<p>最终得到密文: ppfmyk n if pfkyfyd hkmmcfc</p>
+
+<p>在线加解密<a href="http://www.practicalcryptography.com/ciphers/classical-era/straddle-checkerboard/">传送门</a></p>
+
+<h3>24.分组摩尔斯替换密码</h3>
+
+<p>分组摩尔斯替换密码(Fractionated Morse Cipher)首先把明文转换为莫尔斯电码，不过每个字母之间用<code>x</code>分开，每个单词用<code>xx</code>分开。然后使用密钥生成一个替换密表，这个密表包含所有<code>. - x</code>组合的情况(因为不会出现<code>xxx</code>的情况，所以一共26种组合)。</p>
+
+<p>密钥:<code>MORSECODE</code></p>
+
+<p>密表:</p>
+
+<div><div id="highlighter_487911" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">MORSECDABFGHIJKLNPQTUVWXYZ</code></div><div class="line number2 index1 alt1"><code class="shell plain">.........---------XXXXXXXX</code></div><div class="line number3 index2 alt2"><code class="shell plain">...---XXX...---XXX...---XX</code></div><div class="line number4 index3 alt1"><code class="shell plain">.-X.-X.-X.-X.-X.-X.-X.-X.-</code></div></div></td></tr></tbody></table></div></div>
+
+<p>说明:密表下半部分是固定的，密表的安全性以及加密效果主要取决于使用的密钥。</p>
+
+<p>明文：<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>(类似)摩尔斯电码:</p>
+
+<div><div id="highlighter_748540" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 30px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">-x....x.xx--.-x..-x..x-.-.x-.-xx-...x.-.x---x.--x-.xx..-.x---x-..-xx.---x..- --x.--.x...xx---x...-x.x.-.xx-x....x.xx.-..x.-x--..x-.--xx-..x---x--.</code></div></div></td></tr></tbody></table></div></div>
+
+<p>说明:明文在转换为(类似)摩尔斯电码后进行每3个字符分组，再进行密表的查表。</p>
+
+<p>密文(经过密表替换):<code>LMUWC OQVHG ZMTAK EVYSW NOYJQ NLIQB JQCDH XMDYF TWRGP FWNH</code></p>
+
+<p>已知密钥在线加解密<a href="http://ruffnekk.stormloader.com/fractmorse_tool.html">传送门</a></p>
+
+<h3>25.Bazeries密码</h3>
+
+<p>Bazeries密码(Bazeries Cipher)是换位密码和替换密码的组合，使用两个波利比奥斯方阵，一个明文字母方阵，使用一个随机的数字(一般小于1000000)的生成一个密钥矩阵同时作为第一轮明文划分分组，比如2333这个数字翻译为英文便是TWO THOUSAND THREE HUNDRED THIRTY THREE,从第一个字母T开始选取不重复的字母，之后再从字母表中按序选取没有出现的字母组成密钥矩阵。</p>
+
+<p>明文:<code>THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG</code></p>
+
+<p>随机数字:<code>2333</code></p>
+
+<p>明文矩阵:</p>
+
+<div><div id="highlighter_631499" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">A&nbsp; F&nbsp; L&nbsp; Q&nbsp; V</code></div><div class="line number2 index1 alt1"><code class="shell plain">B&nbsp; G&nbsp; M&nbsp; R&nbsp; W</code></div><div class="line number3 index2 alt2"><code class="shell plain">C&nbsp; H&nbsp; N&nbsp; S&nbsp; X</code></div><div class="line number4 index3 alt1"><code class="shell plain">D I</code><code class="shell plain">/J</code> <code class="shell plain">O&nbsp; T&nbsp; Y</code></div><div class="line number5 index4 alt2"><code class="shell plain">E&nbsp; K&nbsp; P&nbsp; U&nbsp; Z</code></div></div></td></tr></tbody></table></div></div>
+
+<p>示例密钥矩阵:</p>
+
+<div><div id="highlighter_872572" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">T&nbsp; W&nbsp; O&nbsp; H&nbsp; U</code></div><div class="line number2 index1 alt1"><code class="shell plain">S&nbsp; A&nbsp; N&nbsp; D&nbsp; R</code></div><div class="line number3 index2 alt2"><code class="shell plain">E I</code><code class="shell plain">/J</code> <code class="shell plain">Y&nbsp; B&nbsp; C</code></div><div class="line number4 index3 alt1"><code class="shell plain">F&nbsp; G&nbsp; K&nbsp; L&nbsp; M</code></div><div class="line number5 index4 alt2"><code class="shell plain">P&nbsp; Q&nbsp; V&nbsp; X&nbsp; Z</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文分组:</p>
+
+<div><div id="highlighter_161987" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">2&nbsp;&nbsp; 3&nbsp;&nbsp; 3&nbsp;&nbsp; 3&nbsp;&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 3&nbsp;&nbsp; 3&nbsp; 2&nbsp;&nbsp; 3&nbsp;&nbsp; 3&nbsp; 3</code></div><div class="line number2 index1 alt1"><code class="shell plain">TH EQU ICK BRO WN FOX JUM PSO VE RTH ELA ZYD OG</code></div></div></td></tr></tbody></table></div></div>
+
+<p>分组明文反序:</p>
+
+<div><div id="highlighter_244750" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">HT UQE KCI ORB WN XOF MUJ OSP EV EHT ALE DYZ GO</code></div></div></td></tr></tbody></table></div></div>
+
+<p>使用密钥矩阵替换:</p>
+
+<div><div id="highlighter_947496" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">IL XHP QEG KDS YR CKW NXG KBV PU ILD TOP FMZ AK</code></div></div></td></tr></tbody></table></div></div>
+
+<p>(比如'H'在明文矩阵对应到密钥矩阵的位置就是'I'）</p>
+
+<p>已知密钥在线加解密<a href="http://ruffnekk.stormloader.com/bazeries_tool.html">传送门</a></p>
+
+<h3>26.Digrafid密码</h3>
+
+<p>Digrafid密码(Digrafid Cipher)使用两个密钥生成分别生成类似波利比奥斯方阵的3x9方格的密表。，主要有3分组和4分组两类。</p>
+
+<p>第一个方阵密钥:<code>digrafid</code></p>
+
+<p>第二个方阵密钥:<code>cipher</code></p>
+
+<p>密表：</p>
+
+<div><div id="highlighter_615104" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div><div class="line number5 index4 alt2" style="height: 15px !important">5</div><div class="line number6 index5 alt1" style="height: 15px !important">6</div><div class="line number7 index6 alt2" style="height: 15px !important">7</div><div class="line number8 index7 alt1" style="height: 15px !important">8</div><div class="line number9 index8 alt2" style="height: 15px !important">9</div><div class="line number10 index9 alt1" style="height: 15px !important">10</div><div class="line number11 index10 alt2" style="height: 15px !important">11</div><div class="line number12 index11 alt1" style="height: 15px !important">12</div><div class="line number13 index12 alt2" style="height: 15px !important">13</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">1 2 3 4 5 6 7 8 9</code></div><div class="line number2 index1 alt1"><code class="shell plain">D I G R A F D B C 1 2 3</code></div><div class="line number3 index2 alt2"><code class="shell plain">E H J L M N O P Q 4 5 6</code></div><div class="line number4 index3 alt1"><code class="shell plain">S T U V W X Y Z </code><code class="shell comments"># 7 8 9</code></div><div class="line number5 index4 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">c f s 1</code></div><div class="line number6 index5 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">i g t 2</code></div><div class="line number7 index6 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">p j u 3</code></div><div class="line number8 index7 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">h k </code><code class="shell functions">v</code> <code class="shell plain">4</code></div><div class="line number9 index8 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">e l w 5</code></div><div class="line number10 index9 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">r m x 6</code></div><div class="line number11 index10 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">a n y 7</code></div><div class="line number12 index11 alt1"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">b o z 8</code></div><div class="line number13 index12 alt2"><code class="shell spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="shell plain">d q </code><code class="shell comments"># 9</code></div></div></td></tr></tbody></table></div></div>
+
+<p>明文:<code>THE QUICK BROWN FOX</code></p>
+
+<p>密表转换(以4分组为例):</p>
+
+<div><div id="highlighter_489336" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div><div class="line number4 index3 alt1" style="height: 15px !important">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">Th Eq Ui Ck&nbsp;&nbsp; Br Ow Nf Ox</code></div><div class="line number2 index1 alt1"><code class="shell plain">2&nbsp; 1&nbsp; 3&nbsp; 9&nbsp;&nbsp;&nbsp; 8&nbsp; 7&nbsp; 6&nbsp; 7</code></div><div class="line number3 index2 alt2"><code class="shell plain">7&nbsp; 5&nbsp; 7&nbsp; 2&nbsp;&nbsp;&nbsp; 1&nbsp; 6&nbsp; 5&nbsp; 6</code></div><div class="line number4 index3 alt1"><code class="shell plain">4&nbsp; 9&nbsp; 2&nbsp; 4&nbsp;&nbsp;&nbsp; 6&nbsp; 5&nbsp; 1&nbsp; 6</code></div></div></td></tr></tbody></table></div></div>
+
+<p>说明:T在第一矩阵第2列，h在第二矩阵第4行，T所在的行与h所在的列相交的位置数字为7，所以Th表示为274。</p>
+
+<p>转换密文:</p>
+
+<div><div id="highlighter_180510" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">213 975 724 924&nbsp;&nbsp; 876 716 566 516</code></div><div class="line number2 index1 alt1"><code class="shell plain">Ip&nbsp; </code><code class="shell comments">#e&nbsp; Dk&nbsp; Ck&nbsp;&nbsp;&nbsp; Zr&nbsp; Dr&nbsp; Mx&nbsp; Ar</code></div></div></td></tr></tbody></table></div></div>
+
+<h3>27.格朗普雷密码</h3>
+
+<p>格朗普雷密码(Grandpré Cipher)是替换密码的一种，一般使用8个8字母的单词横向填充8x8方阵，且第一列为一个单词，并且在方阵中26个字母都必须出现一次以上。</p>
+
+<p>示例密阵:</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103155574778.jpg" alt=""></p>
+
+<div><div id="highlighter_791898" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">明文:T&nbsp; H&nbsp; E&nbsp; Q&nbsp; U&nbsp; I&nbsp; C&nbsp; K&nbsp; B&nbsp; R&nbsp; O&nbsp; W&nbsp; N&nbsp; F&nbsp; O </code></div><div class="line number2 index1 alt1"><code class="shell plain">密文:84 27 82 41 51 66 31 36 15 71 67 73 52 34 67</code></div></div></td></tr></tbody></table></div></div>
+
+<p>说明：明文中的字母在密阵位置可能不止一个，所以加密结果可能有多种，但是不影响解密。密阵还有6x6，7x7，9x9,10x10几种。显然密阵越大每个字母被替换的情况就可能越多，那么加密效果就更好。</p>
+
+<h3>28.比尔密码</h3>
+
+<p>比尔密码(Beale ciphers)有三份密码，当然这里说的是已被破解第二份，是一种类似书密码的替换密码。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103155650516.png" alt=""></p>
+
+<p>以第二密码为例，每一个数字代表美国《独立宣言》的文本中的第几个词的首字母，如1代表第1个词的首字母“w”，2代表第2个词首字母“i”。解密后的文字如下：</p>
+
+<p>I have deposited in the county of Bedford...</p>
+
+<p>比尔密码还有一段有趣的故事，感兴趣可以看一下比尔密码的<a href="https://zh.wikipedia.org/wiki/%E6%AF%94%E5%B0%94%E5%AF%86%E7%A0%81">详细介绍</a>。</p>
+
+<h3>29.键盘密码</h3>
+
+<p>一般用到的键盘密码就是手机键盘和电脑键盘两种，2014 0ctf比赛里Crypto类型中Classic一题就是电脑键盘密码，详细可以<a href="http://www.programlife.net/0ops-ctf-writeup.html">参考</a>，另外给出另外一些<a href="http://www.secbox.cn/hacker/ctf/8078.html">参考</a>情况。</p>
+
+<h2>其他有趣的机械密码</h2>
+
+<h3>1.恩尼格玛密码</h3>
+
+<p>恩尼格玛密码机（德语：Enigma，又译哑谜机，或“谜”式密码机）是一种用于加密与解密文件的密码机。确切地说，恩尼格玛是对二战时期纳粹德国使用的一系列相似的转子机械加解密机器的统称，它包括了许多不同的型号，为密码学对称加密算法的流加密。详细工作原理参考<a href="https://zh.wikipedia.org/wiki/%E6%81%A9%E5%B0%BC%E6%A0%BC%E7%8E%9B%E5%AF%86%E7%A0%81%E6%9C%BA">维基百科</a>。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103203693531.jpg" alt=""></p>
+
+<p>在线模拟<a href="http://enigmaco.de/enigma/enigma.html">传送门</a></p>
+
+<p>感兴趣可以观看<a href="http://list.youku.com/albumlist/show?id=23400097&amp;ascending=1&amp;page=1">播单:计算机历史文化课</a></p>
+
+<h2>代码混淆加密</h2>
+
+<p>1.<a href="http://www.zhaoyuanma.com/aspfix.html">asp混淆加密</a></p>
+
+<p>2.[php language="混淆加密"][/php][/php]<a href="http://www.zhaoyuanma.com/phpjmvip.html">118</a></p>
+
+<p>3.[css language="/js混淆加密"][/css][/css]<a href="http://tool.css-js.com/">119</a></p>
+
+<p>4.<a href="http://www.zhaoyuanma.com/aspfix.html">VBScript.Encode混淆加密</a></p>
+
+<h3>5.ppencode</h3>
+
+<p>ppencode-Perl把Perl代码转换成只有英文字母的字符串。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103160015412.png" alt=""></p>
+
+<p>ppencode<a href="http://namazu.org/~takesako/ppencode/demo.html">传送门</a></p>
+
+<h3>6.rrencode</h3>
+
+<p>rrencode可以把ruby代码全部转换成符号。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103160293706.jpg" alt=""></p>
+
+<p>rrencode<a href="http://www.lab2.kuis.kyoto-u.ac.jp/~yyoshida/rrencode.html">传送门</a></p>
+
+<h3>7.jjencode/aaencode</h3>
+
+<p>jjencode将JS代码转换成只有符号的字符串，类似于rrencode，介绍的<a href="http://utf-8.jp/public/20090710/jjencode.pps">PPT</a>，aaencode可以将JS代码转换成常用的网络表情，也就是我们说的颜文字js加密。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103160390391.png" alt=""></p>
+
+<p>aaencode<a href="http://utf-8.jp/public/aaencode.html">传送门</a></p>
+
+<p>jjencode/aaencode的解密直接在浏览器的控制台里输入密文即可执行解密，想要详细了解jjencode是如何进行请<a href="http://pferrie2.tripod.com/papers/jjencode.pdf">参考</a>，你也可以在github上<a href="https://github.com/jacobsoo/Decoder-JJEncode">下载</a>实现jjdecoder的源码进行分析。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103173692977.png" alt=""></p>
+
+<h3>8.JSfuck</h3>
+
+<p>JSFuck 可以让你只用 6 个字符<code>[ ]( ) ! +</code>来编写 JavaScript 程序。</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103160863321.png" alt=""></p>
+
+<p>JSfuck<a href="http://www.jsfuck.com/">传送门</a></p>
+
+<h3>9.jother</h3>
+
+<p>jother是一种运用于javascript语言中利用少量字符构造精简的匿名函数方法对于字符串进行的编码方式。其中8个少量字符包括：<code>!  + (  ) [  ] {  }</code>。只用这些字符就能完成对任意字符串的编码。</p>
+
+<p><a href="http://drops.wooyun.org/author/do9gy">do9gy</a>的<a href="http://drops.wooyun.org/web/4410">jother编码之谜</a></p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103160970856.png" alt=""></p>
+
+<p>jother编码<a href="http://tmxk.org/jother/">传送门</a></p>
+
+<p>jother直接在浏览器(IE可以)的控制台里输入密文即可执行解密：</p>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103161159933.png" alt=""></p>
+
+<h3>10.brainfuck</h3>
+
+<p>Brainfuck是一种极小化的计算机语言，按照"Turing complete（完整图灵机）"思想设计的语言，它的主要设计思路是：用最小的概念实现一种“简单”的语言，BrainF**k 语言只有八种符号，所有的操作都由这八种符号(<code>&gt; &lt; + - . , [ ]</code>)的组合来完成。</p>
+
+<p>明文：hello!</p>
+
+<div><div id="highlighter_280629" class="syntaxhighlighter  shell"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2" style="height: 15px !important">1</div><div class="line number2 index1 alt1" style="height: 15px !important">2</div><div class="line number3 index2 alt2" style="height: 15px !important">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="shell plain">+++++ +++++ [-&gt;++ +++++ +++&lt;] &gt;++++ .---. +++++ ++..+ ++.&lt;+ +++++ +++++</code></div><div class="line number2 index1 alt1"><code class="shell plain">[-&gt;++ +++++ ++++&lt; ]&gt;+++ ++++. &lt;++++ +++[- &gt;---- ---&lt;] &gt;--.&lt; +++++ ++[-&gt;</code></div><div class="line number3 index2 alt2"><code class="shell plain">----- --&lt;]&gt; ----- ----- .&lt;</code></div></div></td></tr></tbody></table></div></div>
+
+<p>brainfuck<a href="http://www.splitbrain.org/services/ook">传送门</a></p>
+
+<p>其他稀奇古怪的编程语言请<a href="http://news.mydrivers.com/1/190/190926.htm">参考</a></p>
+
+<h2>相关工具</h2>
+
+<ul>
+<li><p><a href="http://www.wechall.net/applet/JPK_406.jar">JPK神器</a></p></li>
+<li><p><a href="https://github.com/jameslyons/python_cryptanalysis">密码破解脚本</a></p></li>
+<li><p><a href="https://dl.packetstormsecurity.net/shellcode/shellcodeencdec.py.txt">shellcode转换脚本</a></p></li>
+</ul>
+
+<h2>参考网站</h2>
+
+<ul>
+<li><p><a href="https://en.wikipedia.org/wiki/Classical_cipher">Wikipedia Classical Cipher</a></p></li>
+<li><p><a href="http://cryptogram.org/cipher_types.html">Cryptogram Cipher Types</a></p></li>
+<li><p><a href="http://www.practicalcryptography.com/">Practical Cryptography</a></p></li>
+<li><p><a href="http://rumkin.com/tools/cipher/">Rumkin Cipher Tools</a></p></li>
+<li><p><a href="https://encode-decode.appspot.com/">encode-decode</a></p></li>
+<li><p><a href="https://www.hackfun.org/">4ido10n Blog</a></p></li>
+<li><p><a href="http://wordsmith.org/anagram/">Anagram</a></p></li>
+<li><p><a href="http://www.thonky.com/kryptos/">Thonky</a></p></li>
+</ul>
+
+<p><img src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/2016071103161191942.gif" alt=""></p>      <p></p>
+    </section>
+  </article>
+  <!-- collect -->
+  <div class="entry-controls clearfix">
+		<div style="float:left;color:#9d9e9f;font-size:15px">
+			<span>
+				©乌云知识库版权所有 未经许可 禁止转载
+			</span>
+		</div>
+        <div class="right-section">
+          <!-- <span class="control-item read-counts">
+            <i class="icon icon-eye"></i>13 人读过
+          </span> -->
+          <!-- ngIf: ownPost(post) -->
+          <a href="javascript:void(0)" name="colloct-button" class="control-item report ng-scope fav-add">
+            <i class="glyphicon glyphicon-star-empty"></i><span>收藏</span>
+          </a><!-- end ngIf: !ownPost(post) && !isCensoring -->
+          <!-- ngIf: !isCensoring --><div ng-transclude="" class="post-share-button post-menu-button ui-menu-button ng-scope" ng-class="{ true: &#39;open&#39;, false: &#39;close&#39; }[open]" ui-menu-button="" onbeforeopen="beforeShareMenuOpen()" ng-if="!isCensoring">
+            <a href="javascript:void(0)" class="menu-button control-item share ng-scope"><i class="icon icon-share"></i>分享</a>
+            <menu class="menu ng-scope" tabindex="0">
+              <!-- ngRepeat: item in shareMenuItems --><div class="menu-item ng-binding ng-scope share-weibo" tabindex="0">
+              <a class="share-sina-weibo" target="_blank" href="http://service.weibo.com/share/share.php?title=%20CTF%E4%B8%AD%E9%82%A3%E4%BA%9B%E8%84%91%E6%B4%9E%E5%A4%A7%E5%BC%80%E7%9A%84%E7%BC%96%E7%A0%81%E5%92%8C%E5%8A%A0%E5%AF%86%EF%BC%88%E5%88%86%E4%BA%AB%E6%9D%A5%E8%87%AA%20@%E4%B9%8C%E4%BA%91%E7%9F%A5%E8%AF%86%E5%BA%93%20%C2%B7%20%E4%BD%9C%E8%80%85%EF%BC%9A4ido10n%EF%BC%89&amp;url=file%3A///Users/moxiaoxi/Desktop/CTF%25E4%25B8%25AD%25E9%2582%25A3%25E4%25BA%259B%25E8%2584%2591%25E6%25B4%259E%25E5%25A4%25A7%25E5%25BC%2580%25E7%259A%2584%25E7%25BC%2596%25E7%25A0%2581%25E5%2592%258C%25E5%258A%25A0%25E5%25AF%2586%2520_%2520WooYun%25E7%259F%25A5%25E8%25AF%2586%25E5%25BA%2593.html&amp;pic=http://static.wooyun.org//drops/20160711/2016071103300271498.jpg">
+                <i class="icon icon-share-sina"></i>新浪微博
+              </a>
+              </div><!-- end ngRepeat: item in shareMenuItems -->
+            </menu>
+          </div><!-- end ngIf: !isCensoring -->
+
+        </div>
+
+      </div>
+
+          
+  <!-- collect end -->
+  <!-- recommend -->
+  <div class="yarpp-related yarpp-related-none">
+<h3>为您推荐了适合您的技术文章:</h3>
+<ol id="recommandsystem">
+	
+		<li><a href="http://drops.wooyun.org/tips/1439" rel="bookmark" id="re1">浏览器安全策略说之内容安全策略CSP</a></li>
+		
+		<li><a href="http://drops.wooyun.org/tips/3349" rel="bookmark" id="re2">uctf-杂项题目分析</a></li>
+		
+		<li><a href="http://drops.wooyun.org/tips/7326" rel="bookmark" id="re3">堆溢出的unlink利用方法</a></li>
+		
+		<li><a href="http://drops.wooyun.org/tips/1424" rel="bookmark" id="re4">Iptables入门教程</a></li>
+	 
+</ol>
+</div>
+  <!-- recommend end -->
+  <!-- comment -->
+  <div id="comments" class="comment-list clearfix">
+            <div class="new_comment" data-remote="true" id="new_comment">
+              <div class="comment-head">
+              <input type="hidden" name="comment_post_ID" value="17609">
+                            <input type="input" placeholder="昵称" name="nickname"><br>
+                          <input type="input" placeholder="验证码" name="captcha"> <img id="captcha_img" align="center" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/captcha.php" style="border:none; cursor:pointer" onclick="this.src=&#39;/wooyun/captcha.php?&#39;+Math.random()"><br>
+            </div>
+      <div class="comment-text">
+        <textarea class="mousetrap" id="comment_content" maxlength="2000" placeholder="写下你的评论…"></textarea>
+        <div>
+          <input class="btn btn-info" data-disable-with="提交中..." name="commit" type="submit" value="发 表">
+          <span class="warning" style="display: none"><i class="fa fa-exclamation-circle"></i><span class="warning-text"></span></span>
+        </div>
+      </div>
+  </div>
+          <div id="comment-list">
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_50861461927866.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">陆由乙</span>
+                 <span class="reply-time">2016-07-13 08:26:33</span>
+        </div>
+        <p></p><p>mark</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;陆由乙&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_108481463036705.jpg">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">4ido10n</span>
+                 <span class="reply-time">2016-07-12 19:23:41</span>
+        </div>
+        <p></p><p>@小骨  可怕,,ԾㅂԾ,,</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;4ido10n&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">七月是你的Saber酱</span>
+                 <span class="reply-time">2016-07-12 12:35:19</span>
+        </div>
+        <p></p><p>MARK</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;七月是你的Saber酱&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">凌轩</span>
+                 <span class="reply-time">2016-07-12 10:32:04</span>
+        </div>
+        <p></p><p>见识了、、大师傅屌、</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;凌轩&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">小骨</span>
+                 <span class="reply-time">2016-07-12 08:41:38</span>
+        </div>
+        <p></p><p>四师傅，爱你</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;小骨&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_108481463036705.jpg">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">4ido10n</span>
+                 <span class="reply-time">2016-07-11 18:24:53</span>
+        </div>
+        <p></p><p>@胡小树  求组织收留 ,,ԾㅂԾ,,</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;4ido10n&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">胡小树</span>
+                 <span class="reply-time">2016-07-11 17:27:58</span>
+        </div>
+        <p></p><p>绝对的赛棍啊，不知大神，哪个队伍的</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;胡小树&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">懵逼小书童</span>
+                 <span class="reply-time">2016-07-11 14:17:38</span>
+        </div>
+        <p></p><p>感谢楼主分享，辛苦了！</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;懵逼小书童&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">alert('xss')</span>
+                 <span class="reply-time">2016-07-11 14:05:04</span>
+        </div>
+        <p></p><p> test 以下</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;alert(&#39;xss&#39;)&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/default.png">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">alert('xss')</span>
+                 <span class="reply-time">2016-07-11 14:04:47</span>
+        </div>
+        <p></p><p>&lt;script&gt;alert('xss')&lt;/script&gt; </p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;alert(&#39;xss&#39;)&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_54601463071873.jpg">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">sco4x0</span>
+                 <span class="reply-time">2016-07-11 12:41:40</span>
+        </div>
+        <p></p><p>马一下</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;sco4x0&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+    
+    <div class="note-comment">
+      <img class="avatar" alt="30" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_70821438833791.jpg">
+      <div class="content">
+        <div class="comment-header">
+          <span class="author-link">Chinalover</span>
+                 <span class="reply-time">2016-07-11 11:36:27</span>
+        </div>
+        <p></p><p>师傅厉害啊</p>
+<p></p>
+        <div class="comment-footer clearfix">   <a class="reply pull-right" onclick="reply(&quot;Chinalover&quot;)" href="javascript:void(null)"> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>
+      </div>
+    </div>
+      </div>
+  </div>
+  <!-- comment end -->
+  <aside class="sidebar">
+    <div class="block column-about">
+      <a href="file:///author/4ido10n" class="avatar-link">
+        <img class="avatar-big" ng-src="http://zone.wooyun.org/upload/avatar/avatar_108481463036704_b.jpg" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/avatar_108481463036704_b.jpg">
+      </a>
+      <a href="file:///author/4ido10n" class="title ng-binding">4ido10n</a>
+      <!-- ngIf: column.creator.slug == me.slug -->
+      <div class="followers" ng-switch="" on="!!column.followersCount">
+
+      </div>
+      <div class="description ng-binding" ng-bind-html="column.description | linky"></div>
+    </div>
+
+    <div class="block rel-topics ng-hide" ng-show="!isCensoring &amp;&amp; (post.topics.length || ownPost(post))">
+      <!-- ngIf: post.topics.length -->
+      <!-- ngIf: ownPost(post) -->
+    </div>
+
+  </aside>
+</div>
+
+
+<script>
+  //代码高亮功能
+  $ = jQuery;
+
+  $("pre").each(function(){
+    txt = $(this).text();
+    lang = txt.split("\n")[0];
+    if(lang.indexOf("#!") == 0){
+      name = lang.replace("#!", "");
+      txt = txt.replace(lang + "\n", "");
+      $(this).addClass("brush:" + name)
+    }else{
+      $(this).addClass("highlight");
+    }
+    $(this).text(txt)
+  })
+
+  function TimeToStr(){
+    var now = new Date();
+
+    var year = now.getFullYear();       //年
+    var month = now.getMonth() + 1;     //月
+    var day = now.getDate();            //日
+
+    var hh = now.getHours();            //时
+    var mm = now.getMinutes();          //分
+    var ss = now.getSeconds();
+
+    if(month < 10){
+      month = "0" + month;
+    }
+    if(day < 10){
+      day = "0" + day;
+    }
+    if(ss < 10){
+      ss = "0" + day;
+    }
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+  }
+
+  var reply = function(name){
+    data = $("#comment_content").val();
+    value = data + "@" + unescape(name) + " ";
+    $("#comment_content").val(value);
+    $("html,body").animate({scrollTop:$("#comments").offset().top},1000)
+  }
+
+  function js_relace(str){
+    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  $("input[name=commit]").bind("click", function(){
+    $("input[name=commit]").attr("value", "提交中...")
+
+    author = $("input[name=nickname]").val();
+    content = $("#comment_content").val();
+    captcha = $("input[name=captcha]").val();
+    comment_post_ID = $("input[name=comment_post_ID]").attr("value")
+    $.post("/wp-comments-ajax.php", {comment_post_ID: comment_post_ID, author: author, comment: content, captcha: captcha}, function(data){
+      $("input[name=commit]").attr("value", "发 表")
+      //清空验证码
+      $("input[name=captcha]").val("");
+      if(data.status == 1){
+        alert("操作失败");
+        return;
+      }
+
+      id = "note-conmment-" + Math.round(Math.random() * 1000);
+      html = '  <div class="note-comment" id="'+ id + '" style="display:none">\
+          <img class="avatar" alt="30" src="http://wooyun.b0.upaiyun.com/wooyun_job/avatar/default.png">\
+          <div class="content">\
+            <div class="comment-header"><span class="author-link">' + js_relace($("input[name=nickname]").val()) +'</span>\
+              <span class="reply-time">' + TimeToStr() + '</span>\
+            </div>\
+            <p>'+ data.content +'</p>\
+            <div class="comment-footer clearfix">   <a href="javascript:void(null)" class="reply pull-right" onclick=reply("' + escape($("input[name=nickname]").val()) + '")> <i class="glyphicon glyphicon-hand-up"></i>回复  </a></div>\
+          </div>\
+        </div>';
+
+      $($.parseHTML(html)).prependTo("#comment-list");
+
+      $("#" + id).fadeIn(1000);
+      //清空评论
+      $("#comment_content").val("");
+
+      $("#captcha_img").click()
+
+    }).error(function(xhr,errorText,errorType){
+      $("input[name=commit]").attr("value", "发 表")
+      alert("您提交评论的速度太快了，请稍后再发表评论");
+    });
+
+  })
+
+  $(function(){
+    $("#captcha_img").click()
+  })
+
+  $(function (){
+    $("[data-toggle='popover']").popover();
+  });
+  //判断是否为移动端
+  if (navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i)){
+    $(".navbar-wooyun").addClass("hidden");
+    $(".navbar-mobile").removeClass("hidden");
+    $("body").addClass("navbar-mobile-show");
+  }
+
+  //收藏 取消收藏功能
+  var postID='17609';
+  var token='';
+  var actionUrl='/wooyun/action.php';
+
+  //添加收藏
+  $(document).on("click", ".fav-add", function(){
+    if(token == ""){
+      alert("请登录后操作");
+      return;
+    }
+    $.getJSON(actionUrl, {'act': 'collect', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+      if(data.error == 0){
+        //操作成功
+        $(".fav-add").removeClass("fav-add").addClass("fav-cancel");
+        $(".fav-cancel").find("i").removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+        $(".fav-cancel").find("span").text("已收藏");
+      }else{
+        alert(data.content);
+      }
+    })
+  });
+  //取消收藏
+  $(document).on("click", ".fav-cancel",function(){
+    $.getJSON(actionUrl, {'act': 'collectcancel', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+      if(data.error == 0){
+        //操作成功
+        $(".fav-cancel").removeClass("fav-cancel").addClass("fav-add");
+        $(".fav-add").find("i").removeClass("glyphicon-star").addClass("glyphicon-star-empty");
+        $(".fav-add").find("span").text("收藏");
+      }else{
+        alert(data.content);
+      }
+    })
+  })
+
+//判断用户是否已经收藏
+if(token != ""){
+  $.getJSON(actionUrl, {'act': 'checkcollect', 'id': postID, 'token': token, 'rid':Math.random()}, function(data){
+    if(data.error == 1){
+      //已经收藏了
+      $(".fav-add").removeClass("fav-add").addClass("fav-cancel");
+      $(".fav-cancel").find("i").removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+      $(".fav-cancel").find("span").text("已收藏");
+    }
+  })
+}
+//控制分享代码
+$(document).on("mouseover", ".post-share-button", function(){$(".post-share-button").addClass("open")})
+$(document).on("mouseleave", ".post-share-button", function(){$(".post-share-button").removeClass("open")})
+
+$(document).on("click", ".share-weibo", function(){
+  $(".post-share-button").removeClass("open");
+})
+//设置一下微博分享的链接
+$(".share-sina-weibo").attr("target", "_blank");
+share_title = $("header h1").text() + "（分享来自 @乌云知识库 · 作者：" + $("header div a").attr("href").replace("/author/", "") +  "）";
+share_url = escape(location.href)
+share_pic = $($(".entry-content img")[0]).attr("src");
+share_url = "http://service.weibo.com/share/share.php?title= " + share_title + "&url=" + share_url + "&pic=" + share_pic;
+$(".share-sina-weibo").attr("href", share_url)
+</script>
+<script>
+/* <![CDATA[ */
+var rcGlobal = {
+	serverUrl		:'http://drops.wooyun.org',
+	infoTemp		:'%REVIEWER% 在 %POST%',
+	loadingText		:'正在加载',
+	noCommentsText	:'没有任何评论',
+	newestText		:'&laquo; 最新的',
+	newerText		:'&laquo; 上一页',
+	olderText		:'下一页 &raquo;',
+	showContent		:'1',
+	external		:'1',
+	avatarSize		:'32',
+	avatarPosition	:'left',
+	anonymous		:'匿名'
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shCore.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushAS3.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushBash.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushClojure.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushCpp.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushCss.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushDelphi.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushDiff.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushErlang.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushFSharp.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushGroovy.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushJava.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushJScript.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushLatex.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushMatlabKey.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushObjC.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushPerl.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushPhp.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushPlain.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushPython.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushR.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushRuby.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushScala.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushSql.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushVb.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/shBrushXml.js"></script>
+<script type="text/javascript">
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.83c";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://drops.wooyun.org/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.83c";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '帮助';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = '无法找到Brush：';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush不能设置 html-script选项';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<link rel="stylesheet" id="yarppWidgetCss-css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-easyarchives-css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/wp-easyarchives.css" type="text/css" media="screen">
+<link rel="stylesheet" id="wp-recentcomments-css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/wp-recentcomments.css" type="text/css" media="screen">
+<link rel="stylesheet" id="yarppRelatedCss-css" href="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/related.css" type="text/css" media="all">
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/jquery.js"></script>
+<script type="text/javascript" src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/wp-recentcomments.js"></script>
+<span style="float: right;">感谢知乎授权页面模版</span>
+<!-- 百度统计-->
+<div style="display:none">
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9fc41da6a2322bdd80563c9d5a4bdb1d' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./CTF中那些脑洞大开的编码和加密 _ WooYun知识库_files/h.js" type="text/javascript"></script>
+</div>
+
+<script>
+</script>
+<script>
+/*
+$("img").bind('error', function(){
+  img_src = $(this).attr("src");
+  new_src = img_src.replace('static.wooyun.org', 'wooyun.b0.upaiyun.com');
+  $(this).attr("src", new_src);
+})
+*/
+</script>
+
+</main></body></html>
