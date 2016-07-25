@@ -43,7 +43,8 @@ print 'base32encode:',base32encode
 print 'base32decode:',base32decode
 print 'base16encode:',base16encode
 print 'base16decode:',base16decode
-
+#http://string-functions.com/hex-string.aspx
+#把hex的ascii转为ascii
 '''
 3. shellcode编码
 作用：
