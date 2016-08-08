@@ -219,5 +219,7 @@ print 'cipher:',cipher
 print 'plain:',plain
 '''
 参考：http://drops.wooyun.org/tips/17609
+在线一维码、二维码扫描
+https://online-barcode-reader.inliteresearch.com/
 '''
 
