@@ -1,3 +1,0 @@
-Warning: include
-Failed opening '.*' for inclusion
-function.include
