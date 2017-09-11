@@ -34,6 +34,8 @@
 
 7. 哈希扩展
 
+   - [hash_extender](https://github.com/iagox86/hash_extender)
+
 8. paddingOracle
 
    - [PadBuster](https://github.com/GDSSecurity/PadBuster)
