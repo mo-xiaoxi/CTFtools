@@ -8,8 +8,8 @@
 
 1. 自动化扫描工具WVS
    - [AWVS](https://www.acunetix.com/vulnerability-scanner/)
-   - AWVS10以下批量扫描工具:[WVS_Patcher](https://github.com/n0tr00t/WVS_Patcher)本地复制版,[]
-   - AWVS11批量扫描工具:URL
+   - AWVS10以下批量扫描工具:[WVS_Patcher](https://github.com/n0tr00t/WVS_Patcher)、[本地版本](https://github.com/momomoxiaoxi/CTFtools/tree/master/AWVS/WVS10)
+   - AWVS11批量扫描工具:[WVS11](https://github.com/momomoxiaoxi/CTFtools/blob/master/AWVS/WVS11/AWVS11.py)
 2. BurpSuite 
 3. SQL注入
    - sqlmap
