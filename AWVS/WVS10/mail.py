@@ -30,6 +30,6 @@ def send_mail(to_mail, title, content):
     smtp.quit()
 
 if __name__ == '__main__':
-    send_mail('momomomoxiaoxi@gmail.com', '警告', 'test')
+    send_mail('*******@gmail.com', '警告', 'test')
 
 

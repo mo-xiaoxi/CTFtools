@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 # 结果回调邮箱
-callback_mail = 'momomomoxiaoxi@gmail.com'
+callback_mail = 'xxx@gmail.com'
 
 # 并行扫描的WVS进程数
 queue_num = 2
@@ -31,8 +31,8 @@ filter = {
 
 # 邮箱配置：
 mail_conf = {
-    "username": "pegasusx@163.com",
-    "password": "shouquanma1",
+    "username": "xx@163.com",
+    "password": "xxx",
     "smtp_server": 'smtp.163.com',
-    "mail_address": 'pegasusx@163.com'
+    "mail_address": 'xxx@163.com'
 }
