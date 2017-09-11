@@ -4,5 +4,5 @@
 */*/*/.DS_Store
 *.pyc
 # Something can't upload
-./antSword
-./AWVS/WVS11/*.exe
+/antSword
+/AWVS/WVS11/*.exe
