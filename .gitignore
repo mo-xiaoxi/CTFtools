@@ -11,3 +11,6 @@
 /paddingOracle
 /caidao
 /HashExtensions
+/dirsearch
+# 不开放m0xiaoxi.php
+/AD/WAF/m0xiaoxi.php
