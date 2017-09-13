@@ -1,0 +1,9 @@
+<?php
+session_start();
+extract($_GET);
+if(preg_match('/[0-9]/',$_SESSION['PHPSESSID']))
+                   exit;
+if(preg_match('/\/|\./',$_SESSION['PHPSESSID']))
+                   exit;
+include(ini_get("session.save_path")."/sess_".$_SESSION['PHPSESSID']);
+?>

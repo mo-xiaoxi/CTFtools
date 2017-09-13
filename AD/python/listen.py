@@ -62,5 +62,5 @@ def handler(connection,peer):
 
 
 if __name__=='__main__':
-	LTCP_ADDR = ('127.0.0.1',3333)
+	LTCP_ADDR = ('0.0.0.0',3333)
 	start(LTCP_ADDR)
