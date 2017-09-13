@@ -3,7 +3,7 @@
 */*/.DS_Store
 */*/*/.DS_Store
 *.pyc
-# Something can't upload
+# 其他人的项目
 /antSword/*
 /AWVS/WVS11/*.exe
 /BurpSuite
@@ -12,5 +12,6 @@
 /caidao
 /HashExtensions
 /dirsearch
-# 不开放m0xiaoxi.php
+#暂不开放
 /AD/WAF/m0xiaoxi.php
+/AD/proxy
