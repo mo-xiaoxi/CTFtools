@@ -15,6 +15,7 @@
    - 类似反向代理，反向代理一个你想搞事情的网站
    - [7ghost](https://github.com/BevisGoh/7ghost) 需要.htaccess解析
    - 其实，在中转的时候还可以顺带抓包记录。最骚的场景就是A以为在攻击你（B）,你开启反向代理代理了C，与此同时你抓了A的payload...等于做了一个中间人的工作，在不损失自己flag的前提下还能获取到攻击信息。此外，在7ghost的配置中还能把C返回的flag给替换掉。。是不是很骚😂
+   - 如果有curl需修改snoopy.class.php里面的配置（maybe）
 
 ## Pwn
 
