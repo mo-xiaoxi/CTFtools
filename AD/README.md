@@ -6,9 +6,10 @@
 2. WAF
 3. 批量文件上传
 4. 权限维持
-   - 不死马 删不死马
+   - 不死马 [删不死马](https://github.com/coffeehb/php7-opcache-override)
    - contrab
    - [Webshell](https://github.com/momomoxiaoxi/CTFtools/tree/master/AD/Webshell)
+   - ​
 5. [文件监控](https://github.com/rustyJ4ck/FSMon)，防止恶意上传（没用过）
 6. 可视化流量分析 [goaccess](https://github.com/allinurl/goaccess)（没用过）
 7. PHP中转代理脚本

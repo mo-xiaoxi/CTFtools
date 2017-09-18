@@ -14,7 +14,7 @@
 2. BurpSuite 
 
 3. SQL注入
-   - sqlmap
+   - [sqlmap](https://github.com/sqlmapproject/sqlmap)
 
 4. 源码泄漏
    - [.DS_Store](https://github.com/lijiejie/ds_store_exp)
@@ -45,8 +45,23 @@
 
 11. 小工具
 
+    - [phpinfo临时文件利用](https://github.com/momomoxiaoxi/CTFtools/tree/master/Scripts/lfi_tmp.py)一般需要配合文件包含漏洞
+
+    - [PHP7-opcache覆盖利用漏洞](https://github.com/GoSecure/php7-opcache-override) 
+
+    - [DNSlog](https://github.com/BugScanTeam/DNSLog)
+
+      在线的三个DNSlog:
+
+      - 四叶草：[http://admin.dnslog.link](http://admin.dnslog.link/)
+      - CEYE：<http://ceye.io/record/index>
+      - 吐司：<https://www.t00ls.net/dnslog.html>
+
 12. [线下赛](https://github.com/momomoxiaoxi/CTFtools/tree/master/AD)
 
     ​
 
 ## Knowledge
+
+1. [利用PHP 7中的OPcache来实现Webshell](http://bobao.360.cn/learning/detail/2858.html)
+2. ​
