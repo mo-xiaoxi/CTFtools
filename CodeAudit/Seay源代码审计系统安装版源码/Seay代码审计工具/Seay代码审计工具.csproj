@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F7827001-B2A5-420D-8F28-F11F84180667}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Seay代码审计工具</RootNamespace>
+    <AssemblyName>Seay源代码审计系统</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>未标题-1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>bin\Release\bin\json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ascii_info.cs" />
+    <Compile Include="Base64Info.cs" />
+    <Compile Include="F_about.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_about.Designer.cs">
+      <DependentUpon>F_about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_audit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_audit.Designer.cs">
+      <DependentUpon>F_audit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_code.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_code.Designer.cs">
+      <DependentUpon>F_code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Editplus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Editplus.Designer.cs">
+      <DependentUpon>F_Editplus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_funcquery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_funcquery.Designer.cs">
+      <DependentUpon>F_funcquery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Main.Designer.cs">
+      <DependentUpon>F_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_rule_encode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_rule_encode.Designer.cs">
+      <DependentUpon>F_rule_encode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Runphp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Runphp.Designer.cs">
+      <DependentUpon>F_Runphp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_searchinfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_searchinfile.Designer.cs">
+      <DependentUpon>F_searchinfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_SysConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_SysConfig.Designer.cs">
+      <DependentUpon>F_SysConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_tmpstr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_tmpstr.Designer.cs">
+      <DependentUpon>F_tmpstr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HexInfo.cs" />
+    <Compile Include="ListItem.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
+    <Compile Include="md5encode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="toolshelper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="toolsinfo.cs" />
+    <Compile Include="UnicodeInfo.cs" />
+    <Compile Include="UrlInfo.cs" />
+    <EmbeddedResource Include="F_about.resx">
+      <DependentUpon>F_about.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_audit.resx">
+      <DependentUpon>F_audit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_code.resx">
+      <DependentUpon>F_code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Editplus.resx">
+      <DependentUpon>F_Editplus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_funcquery.resx">
+      <DependentUpon>F_funcquery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Main.resx">
+      <DependentUpon>F_Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_rule_encode.resx">
+      <DependentUpon>F_rule_encode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Runphp.resx">
+      <DependentUpon>F_Runphp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_searchinfile.resx">
+      <DependentUpon>F_searchinfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_SysConfig.resx">
+      <DependentUpon>F_SysConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_tmpstr.resx">
+      <DependentUpon>F_tmpstr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\花色背景.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guize.bmp" />
+    <None Include="Resources\guize.txt" />
+    <None Include="Resources\0.png" />
+    <Content Include="Resources\mainbg3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="damotouicon.ico" />
+    <None Include="Resources\relus.txt" />
+    <Content Include="未标题-1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CSPluginKernel\CSPluginKernel.csproj">
+      <Project>{4DDC6EF8-4050-40AD-A038-86ED9C33F4E9}</Project>
+      <Name>CSPluginKernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project\ICSharpCode.TextEditor.csproj">
+      <Project>{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

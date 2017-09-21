@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\C# 插件编程实例1\Debug\MyScript.dll
+C:\Users\Administrator\Desktop\C# 插件编程实例1\Debug\MyScript.pdb
+C:\Users\Administrator\Desktop\C# 插件编程实例1\CSPluginKernel\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\C# 插件编程实例1\CSPluginKernel\obj\Debug\MyScript.dll
+C:\Users\Administrator\Desktop\C# 插件编程实例1\CSPluginKernel\obj\Debug\MyScript.pdb

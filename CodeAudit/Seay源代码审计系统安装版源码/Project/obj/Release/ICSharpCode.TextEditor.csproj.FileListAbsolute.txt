@@ -1,0 +1,3 @@
+F:\临时程序\Seay代码审计工具\Project\bin\ICSharpCode.TextEditor.dll
+F:\临时程序\Seay代码审计工具\Project\obj\Release\ResolveAssemblyReference.cache
+F:\临时程序\Seay代码审计工具\Project\obj\Release\ICSharpCode.TextEditor.dll

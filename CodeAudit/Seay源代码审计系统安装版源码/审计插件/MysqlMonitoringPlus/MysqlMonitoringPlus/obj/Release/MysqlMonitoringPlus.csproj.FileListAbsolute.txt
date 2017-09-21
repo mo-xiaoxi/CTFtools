@@ -1,0 +1,14 @@
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\bin\Release\MysqlMonitoringPlus.dll
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\bin\Release\MysqlMonitoringPlus.pdb
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.dll
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.pdb
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.F_MysqlMonitoring.resources
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.csproj.GenerateResource.Cache
+E:\临时代码\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.Properties.Resources.resources
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\bin\Release\MysqlMonitoringPlus.dll
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\bin\Release\MysqlMonitoringPlus.pdb
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.F_MysqlMonitoring.resources
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.Properties.Resources.resources
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.csproj.GenerateResource.Cache
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.dll
+F:\临时程序\Seay源代码审计系统安装版源码\审计插件\MysqlMonitoringPlus\MysqlMonitoringPlus\obj\Release\MysqlMonitoringPlus.pdb

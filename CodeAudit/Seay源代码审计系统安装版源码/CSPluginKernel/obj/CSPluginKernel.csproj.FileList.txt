@@ -1,0 +1,5 @@
+..\Debug\MyScript.dll
+..\Debug\MyScript.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\MyScript.dll
+obj\Debug\MyScript.pdb
