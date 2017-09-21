@@ -64,4 +64,6 @@
 ## Knowledge
 
 1. [利用PHP 7中的OPcache来实现Webshell](http://bobao.360.cn/learning/detail/2858.html)
-2. ​
+
+2. [那些强悍的PHP一句话后门](http://vpszn.net/vpssafe/102152502531.html)
+
