@@ -16,7 +16,7 @@ curl_setopt($ch, CURLINFO_HEADER_OUT, TRUE);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $content);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 $result=curl_exec($ch);
-//var_dump($result);
+//print_r($result);
 curl_close($ch);
 if(strstr($result, "string")){
     echo "error";
